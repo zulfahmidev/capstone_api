@@ -1,5 +1,5 @@
 from flask import request, jsonify, Blueprint, render_template
-from flask_jwt_extended import create_access_token, jwt_required
+from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from werkzeug.security import check_password_hash
 from system.extensions import db, mail
 from itsdangerous import URLSafeTimedSerializer
@@ -88,7 +88,7 @@ def login() :
                 message="Please verify your email before logging in."
             ), 400
         
-        access_token = create_access_token(identity=user.username)
+        access_token = create_access_token(identity=user.id)
         return jsonify(
             success=True,
             message="Your have succesfully logged in.",
@@ -99,16 +99,17 @@ def login() :
     else :
         return jsonify(
             success=False,
-            message='Login failed. Please check your credentials and try again.',
+            message="Login failed. Please check your credentials and try again.",
         ), 401
     
 @auth.route('/me', methods=['GET'])
 @jwt_required()
-def me(current_user) :
+def me() :
+    user = User.query.filter_by(id=get_jwt_identity()).one_or_none()
     return jsonify(
         status=True,
-        message='',
-        data=current_user.username
+        message="Data loaded successfully.",
+        data=user.as_dict()
     )
 
 def generate_verify_token(email) :

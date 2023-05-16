@@ -28,3 +28,13 @@ class User(db.Model) :
         self.phone = phone
         self.address = address
         self.created_at = datetime.now()
+
+    def as_dict(self):
+       return {
+           "name": self.name,
+           "email": self.email,
+           "birth_date": self.birth_date,
+           "phone": self.phone,
+           "address": self.address,
+           "created_at": self.created_at,
+       }
