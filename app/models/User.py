@@ -1,4 +1,4 @@
-from system.extensions import db
+from extensions import db
 from sqlalchemy import Identity
 from datetime import datetime
 from werkzeug.security import generate_password_hash
