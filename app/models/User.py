@@ -28,6 +28,7 @@ class User(db.Model) :
         self.phone = phone
         self.address = address
         self.created_at = datetime.now()
+        self.save()
 
     def as_dict(self):
        return {
@@ -38,3 +39,7 @@ class User(db.Model) :
            "address": self.address,
            "created_at": self.created_at,
        }
+
+    def save(self) :
+      db.session.add(self)
+      db.session.commit()

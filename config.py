@@ -24,7 +24,7 @@ class InitConfig() :
         
         # JWT Configuration
         app.config['JWT_KEY'] = os.getenv('JWT_KEY')
-        app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(days=3650)
+        app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(days=7)
 
         # Mail Configuration
         app.config['MAIL_SERVER'] = os.getenv('MAIL_SERVER')

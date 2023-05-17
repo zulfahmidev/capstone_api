@@ -6,8 +6,8 @@ from config import InitConfig
 from extensions import db, mail, jwt, mgr
 
 app = Flask(__name__, 
-            template_folder='../templates',
-            static_folder='app/static')
+            static_folder='static',
+            static_url_path='')
 
 load_dotenv('.env')
 InitConfig(app)

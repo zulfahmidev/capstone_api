@@ -1,15 +1,15 @@
 from flask import request, jsonify, Blueprint, render_template
-from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity, get_jwt, set_access_cookies, unset_jwt_cookies
+from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity, get_jti, get_jwt, unset_jwt_cookies
 from werkzeug.security import check_password_hash, generate_password_hash
 from extensions import db, mail
 from itsdangerous import URLSafeTimedSerializer
 from flask_mail import Message
-
-from app.models.User import User
-# from middlewares.checkToken import token_required
-
 from datetime import datetime, timedelta
 import os
+
+from app.models.User import User
+from app.models.LoginLog import LoginLog
+from utils import login_required
 
 auth = Blueprint('auth', __name__)
 
@@ -33,8 +33,6 @@ def register() :
         ), 400
     
     user = User(name, email, password, birth_date, phone, address)
-    db.session.add(user)
-    db.session.commit()
 
     send_email_verify(email)
 
@@ -73,8 +71,7 @@ def verify_email(token):
             message='Email Verified successfully.'), 400
     else :
         user.email_verified = True
-        db.session.add(user)
-        db.session.commit()
+        user.save()
         return jsonify(
             status=True,
             message='You have successfully verified your email!.'), 200
@@ -96,6 +93,10 @@ def login() :
             ), 400
         
         access_token = create_access_token(identity=user.id, fresh=True)
+
+        # Create Login Log
+        LoginLog(get_jti(access_token))
+        
         response = jsonify(
             success=True,
             message="Your have succesfully logged in.",
@@ -103,7 +104,6 @@ def login() :
                 "access_token": access_token
             }
         )
-        set_access_cookies(response, access_token)
         return response, 200
     else :
         return jsonify(
@@ -114,7 +114,7 @@ def login() :
 
 # Me
 @auth.route('/me', methods=['GET'])
-@jwt_required()
+@login_required
 def me() :
     user = User.query.filter_by(id=get_jwt_identity()).one_or_none()
     return jsonify(
@@ -126,15 +126,14 @@ def me() :
 
 # Logout
 @auth.route('/logout', methods=['POST'])
-@jwt_required()
+@login_required
 def logout() :
-    # user = User.query.filter_by(id=get_jwt_identity()).one_or_none()
-    response = jsonify(
+    log = LoginLog.query.filter_by(token_identifier=get_jwt()['jti']).first()
+    log.destroy()
+    return jsonify(
         status=True,
         message="Successfully Logged Out."
-    )
-    unset_jwt_cookies(response)
-    return response, 20
+    ), 20
 # End Logout
 
 # Forgot Password
