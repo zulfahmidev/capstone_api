@@ -1,14 +1,16 @@
 from flask import request, jsonify, Blueprint, render_template
-from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity, get_jti, get_jwt, unset_jwt_cookies
+from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity, get_jti, get_jwt
 from werkzeug.security import check_password_hash, generate_password_hash
 from extensions import db, mail
 from itsdangerous import URLSafeTimedSerializer
 from flask_mail import Message
 from datetime import datetime, timedelta
 import os
+import secrets
 
 from app.models.User import User
 from app.models.LoginLog import LoginLog
+from app.models.ResetPassword import ResetPassword
 from utils import login_required
 
 auth = Blueprint('auth', __name__)
@@ -140,14 +142,15 @@ def logout() :
 @auth.route('/forgot-password', methods=['POST'])
 def forgotPassword() :
     email = request.json.get('email')
-    user = User.query.filter_by(email = email).one_or_none()
+    user = User.query.filter_by(email=email).one_or_none()
     if user is not None :
-        token = generate_verify_token(email)
+        reset_token = secrets.token_hex(16)
+        ResetPassword(email, reset_token)
         return jsonify(
             status=True,
             message="Token reset has been successfully generated.",
             body= {
-                "reset_token": token
+                "reset_token": reset_token,
             }
         ), 200
     return jsonify(
@@ -159,23 +162,18 @@ def forgotPassword() :
 # Reset Password
 @auth.route('/reset-password/<token>', methods=['POST'])
 def resetPassword(token) :
-    try :
-        email = verify_token(token)
-    except :
-        return jsonify(
-            status=False,
-            message='Token has been expired!.'
-        ), 419
-    password = request.json.get('password')
-    user = User.query.filter_by(email=email).first()
-    if user is not None :
-        user.password = generate_password_hash(password)
-        db.session.add(user)
-        db.session.commit()
-        return jsonify(
-            status=True,
-            message='Password successfully changed.'
-        ), 200 
+    rp = ResetPassword.query.filter_by(reset_token=token).first()
+    if rp is not None :
+        password = request.json.get('password')
+        user = User.query.filter_by(email=rp.email).first()
+        if user is not None :
+            user.password = generate_password_hash(password)
+            user.save()
+            rp.destroy()
+            return jsonify(
+                status=True,
+                message='Password successfully changed.'
+            ), 200
     return jsonify(
         status=True,
         message='Token is invalid.'

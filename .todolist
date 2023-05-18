@@ -1,16 +1,21 @@
 # Authentication
-Register    : S
-Login       : S
-Logout      : S
-Verify Email: S
-Forgot Pass : 
-Change Pass :
+Register    : Selesai
+Login       : Selesai
+Logout      : Selesai
+Verify Email: Selesai
+Forgot Pass : Selesai
+Change Pass : Selesai
 
 # Users
-
+Show User   :
 
 # Kuis / Tes
+Create Quiz :
+- Questions :
+- Options   :
+- Responses :
 
 # Chatting dengan Kating
+
 
 # 
