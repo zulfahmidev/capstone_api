@@ -14,11 +14,16 @@ from app.models.LoginLog import LoginLog
 from app.models.ResetPassword import ResetPassword
 from utils import Auth
 
+from utils.Validator import Validator
+
 auth = Blueprint('auth', __name__)
 
 # Register
 @auth.route('/register', methods=['POST'])
 def register() :
+    
+    # Belum Ada Validasi
+    
     name = request.json.get('name').lower()
     email = request.json.get('email').lower()
     phone = request.json.get('phone')

@@ -4,8 +4,9 @@ import base64
 
 class Validator :
   
-  def __init__(self, json, rules) :
-    self.json = json
+  def __init__(self, data, rules) :
+    self.json = data.json
+    self.files = data.files
     self.rules = rules
     self.errors = []
     
@@ -17,7 +18,7 @@ class Validator :
       for rule in self.rules[k] :
         value = self.json.get(k)
         if rule == 'required' :
-          if value is None :
+          if k not in self.files and value is None :
             self.errors.append(f'The {k} field is required.')
         if rule == 'numeric' :
           if value is not None :
@@ -37,5 +38,19 @@ class Validator :
           if value is not None :
             if not isinstance(value, bool) :
               self.errors.append(f'The {k} is not a boolean.')
+        
+        # Masih bermasalah
+        # if k not in self.files :
+        #   file = self.files[k]
+        #   if rule == 'image' :
+        #     if file is not None :
+        #       if not allowed_file(file.filename, [
+        #         'png', 'jpg', 'jpeg', 'gif'
+        #       ]) :
+        #         self.errors.append(f'The {k} field is not an image.')
           
     return len(self.errors) == 0
+
+def allowed_file(filename, exts = []) :
+  return '.' in filename and \
+    filename.rsplit('.', 1)[-1].lower() in exts

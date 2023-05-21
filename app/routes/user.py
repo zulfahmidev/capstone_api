@@ -26,12 +26,12 @@ def show(id) :
 @user_route.route('/<id>', methods=['PUT'])
 @Auth.login_required
 def update(id) :
-    val = Validator(request.json, {
+    val = Validator(request, {
         'name': ['string'],
         'birth_date': ['string'],
         'phone': ['string', 'numeric'],
         'address': ['string'],
-        'picture': ['string', 'base64'],
+        'picture': ['required', 'image'],
     })
     
     if val.validate() :
