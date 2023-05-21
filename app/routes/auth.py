@@ -1,20 +1,20 @@
-from flask import request, jsonify, Blueprint, render_template
-from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity, get_jti, get_jwt
-from werkzeug.security import check_password_hash, generate_password_hash
-from extensions import db, mail
-from itsdangerous import URLSafeTimedSerializer
-from flask_mail import Message
-from datetime import datetime, timedelta
 import os
 import secrets
 
+from flask import request, jsonify, Blueprint, render_template
+from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity, get_jti, get_jwt
+from werkzeug.security import check_password_hash, generate_password_hash
+from itsdangerous import URLSafeTimedSerializer
+from flask_mail import Message
+from datetime import datetime, timedelta
+
+from extensions import db, mail
 from app.models.User import User
 from app.models.LoginLog import LoginLog
 from app.models.ResetPassword import ResetPassword
-from utils import login_required
+from utils import Auth
 
 auth = Blueprint('auth', __name__)
-
 
 # Register
 @auth.route('/register', methods=['POST'])
@@ -36,7 +36,7 @@ def register() :
     
     user = User(name, email, password, birth_date, phone, address)
 
-    send_email_verify(email)
+    send_email_verify(user)
 
     return jsonify(
         success=True,
@@ -45,13 +45,13 @@ def register() :
 # End Register
 
 # Send Email Verification
-def send_email_verify(email) :
-    token = generate_verify_token(email)
+def send_email_verify(user) :
+    token = generate_verify_token(user.email)
     msg = Message(
         subject="Verify Email Address",
-        recipients=[email],
+        recipients=[user.email],
         sender=os.getenv('MAIL_USERNAME'),
-        html=render_template('verify_email.html', token=token)
+        html=render_template('verify_email.html', token=token, name=user.name)
     )
     mail.send(msg)
 # End Send Email Verification
@@ -116,7 +116,7 @@ def login() :
 
 # Me
 @auth.route('/me', methods=['GET'])
-@login_required
+@Auth.login_required
 def me() :
     user = User.query.filter_by(id=get_jwt_identity()).one_or_none()
     return jsonify(
@@ -128,7 +128,7 @@ def me() :
 
 # Logout
 @auth.route('/logout', methods=['POST'])
-@login_required
+@Auth.login_required
 def logout() :
     log = LoginLog.query.filter_by(token_identifier=get_jwt()['jti']).first()
     log.destroy()

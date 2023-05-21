@@ -2,11 +2,72 @@
 <html>
 <head>
     <title>Verify Email</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial;
+            box-sizing: border-box;
+        }
+        main {
+            background-color: lightblue;
+            padding: 0 10%;
+            color: black;
+        }
+        h1 {
+            margin: 2rem;
+            text-align: center;
+        }
+        section {
+            margin: 1rem 5%;
+            padding: 2rem;
+            border-radius: 8px;
+            background-color: white;
+            text-align: center;
+            border: 2px solid #eee;
+        }
+        section h3 {
+            text-align: center;
+            margin: 1rem 0;
+            text-transform: capitalize;
+        }
+        p {
+            text-align: center;
+        }
+        a {
+            display: block;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            padding: 1rem;
+            margin: 1rem 0;
+            background-color: royalblue;
+            text-align: center;
+        }
+        a:visited {
+            color: white;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            opacity: .5;
+        }
+    </style>
 </head>
 <body>
-    <h3>Hello {{ username }},</h3>
-    <p>Thank you for registering. Please click the link below to verify your email.</p>
-    <p><a href="{{ url_for('auth.verify_email', token=token, _external=True) }}">Verify Email</a></p>
-    <p>Thank you!</p>
+    <main>
+        <header>
+            <!-- <img src="{{ url_for('static', filename='images/default.jpg') }}" alt="test"> -->
+            <h1>ARAHKU</h1>
+        </header>
+        <section>
+            <h3>Hello, {{ name }}</h3>
+            <p>Thank you for registering. Please click the link below to verify your email.</p>
+            <a style="color: #ffffff;" href="{{ url_for('auth.verify_email', token=token, _external=True) }}">Verify Email</a>
+        </section>
+        <footer>
+            Copyright &copy;2023 Arahku, All right reserved.
+        </footer>
+    </main>
 </body>
 </html>

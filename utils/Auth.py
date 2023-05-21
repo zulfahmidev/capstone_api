@@ -1,7 +1,6 @@
 from flask import jsonify
 from flask_jwt_extended import verify_jwt_in_request, get_jwt
 from functools import wraps
-from extensions import db
 from app.models.LoginLog import LoginLog
 
 def login_required(fn) :

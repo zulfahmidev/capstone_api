@@ -2,12 +2,16 @@ from flask import Flask
 import os
 from dotenv import load_dotenv
 from app.routes.auth import auth
+from app.routes.user import user_route
+from app.routes.storage import storage_route
 from config import InitConfig
 from extensions import db, mail, jwt, mgr
 
-app = Flask(__name__, 
-            static_folder='static',
-            static_url_path='')
+import collections
+collections.Iterable = collections.abc.Iterable
+
+app = Flask(__name__)
+# app.static_folder = 'static'
 
 load_dotenv('.env')
 InitConfig(app)
@@ -18,3 +22,5 @@ mail.init_app(app)
 mgr.init_app(app, db)
 
 app.register_blueprint(auth, url_prefix='/auth')
+app.register_blueprint(storage_route, url_prefix='/storage')
+app.register_blueprint(user_route, url_prefix='/user')

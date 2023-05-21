@@ -1,3 +1,4 @@
+from utils import URL
 from extensions import db
 from sqlalchemy import Identity
 from datetime import datetime
@@ -10,6 +11,7 @@ class User(db.Model) :
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(255), unique=True, index=True)
+    picture = db.Column(db.String(255), nullable=True)
     password = db.Column(db.String(255), nullable=False)
     birth_date = db.Column(db.DateTime, nullable=False)
     phone = db.Column(db.String(255), nullable=False)
@@ -31,12 +33,16 @@ class User(db.Model) :
         self.save()
 
     def as_dict(self):
+       picture = URL.baseURL("images/default.jpg")
+       if self.picture is not None :
+        picture = URL.baseURL("uploads/" + str(self.picture))
        return {
            "name": self.name,
            "email": self.email,
            "birth_date": self.birth_date,
            "phone": self.phone,
            "address": self.address,
+           "picture": picture,
            "created_at": self.created_at,
        }
 
