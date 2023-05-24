@@ -1,6 +1,8 @@
 from flask_inputs import Inputs
 from flask_inputs.validators import JsonSchema
 import base64
+import imghdr
+import io
 
 class Validator :
   
@@ -38,19 +40,21 @@ class Validator :
           if value is not None :
             if not isinstance(value, bool) :
               self.errors.append(f'The {k} is not a boolean.')
-        
-        # Masih bermasalah
-        # if k not in self.files :
-        #   file = self.files[k]
-        #   if rule == 'image' :
-        #     if file is not None :
-        #       if not allowed_file(file.filename, [
-        #         'png', 'jpg', 'jpeg', 'gif'
-        #       ]) :
-        #         self.errors.append(f'The {k} field is not an image.')
+        if rule == 'image' :
+          if value is not None :
+            if (not isBase64Image(value)) :
+              self.errors.append(f'The {k} is not a Base64 Image.')
           
     return len(self.errors) == 0
 
 def allowed_file(filename, exts = []) :
   return '.' in filename and \
     filename.rsplit('.', 1)[-1].lower() in exts
+    
+def isBase64Image(base64_image) :
+  try :
+    file = base64.b64decode(base64_image)
+    img_type = imghdr.what(io.BytesIO(file))
+    return img_type is not None
+  except base64.binascii.Error :
+    return False

@@ -5,6 +5,7 @@ from flask import Blueprint, jsonify, request
 from app.models.User import User
 from utils import Auth
 from utils.Validator import Validator
+from utils import Storage
 
 user_route = Blueprint('user', __name__)
 
@@ -31,15 +32,19 @@ def update(id) :
         'birth_date': ['string'],
         'phone': ['string', 'numeric'],
         'address': ['string'],
-        'picture': ['required', 'image'],
+        'picture': ['string', 'base64', 'image'],
     })
     
     if val.validate() :
         user = User.query.get(id)
         
         if user is not None :
+            if user.picture is not None :
+                Storage.deleteFile(user.picture)
+            file = Storage.uploadFile(request.json.get('picture'), 'uploads')
+            user.picture = file.name
             keys = [
-                'name', 'birth_date', 'phone', 'address', 'picture'
+                'name', 'birth_date', 'phone', 'address'
             ]
             for k in keys :
                 if request.json.get(k) is not None :
