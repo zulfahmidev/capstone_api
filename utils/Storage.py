@@ -3,9 +3,6 @@ import base64
 import string
 import random
 import time
-import io
-import uuid
-import mimetypes
 import magic
 
 from google.cloud import storage
