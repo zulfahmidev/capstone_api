@@ -16,12 +16,12 @@ def show(id) :
     if user is not None :
         return jsonify(
             status=True,
-            message='Data loaded successfully.'
+            message='Data loaded successfully.',
+            data=user.as_dict()
         ), 200
     return jsonify(
         status=False,
-        message='User not found.',
-        data=user.as_dict()
+        message='User not found.'
     ), 404
 
 @user_route.route('/<id>', methods=['PUT'])
