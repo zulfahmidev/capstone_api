@@ -30,8 +30,6 @@ jobs:
         key: ${{ secrets.KEY }}
         port: 22
         script: |
-            pwd
-            cd capstone_api
-            ls
-            echo "1" | sudo -S python3 app.py
+            cd /home/c065dsx0772/capstone_api/
+            git pull origin main
             
