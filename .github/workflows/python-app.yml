@@ -33,4 +33,5 @@ jobs:
             pwd
             cd capstone_api
             ls
+            sudo python3 app.py
 
