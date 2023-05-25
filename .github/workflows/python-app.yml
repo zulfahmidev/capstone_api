@@ -33,7 +33,5 @@ jobs:
             pwd
             cd capstone_api
             ls
-            sudo su
-            password: 1
-            python3 app.py
-
+            echo "1" | sudo -S python3 app.py
+            
