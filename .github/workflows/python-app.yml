@@ -31,7 +31,7 @@ jobs:
         port: 22
         script: |
             whoami
-            /home/capstone/capstone_api
+            cd /home/capstone/capstone_api
             git pull origin main
           
             
