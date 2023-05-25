@@ -29,5 +29,8 @@ jobs:
         username: ${{ secrets.USER }}
         key: ${{ secrets.KEY }}
         port: 22
-        script: whoami
+        script: |
+            pwd
+            cd capstone_api
+            ls
 
