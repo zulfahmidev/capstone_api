@@ -1,7 +1,7 @@
 # HOW TO USE API
 
 ```http
-GET /auth/register
+POST /auth/register
 
 # Example Body
 Body:
