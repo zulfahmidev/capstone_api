@@ -30,8 +30,10 @@ jobs:
         key: ${{ secrets.KEY }}
         port: 22
         script: |
-            whoamin
-            ls
+            whoami
+            /home/capstone/capstone_api
+            git pull origin main
+          
             
          
             
