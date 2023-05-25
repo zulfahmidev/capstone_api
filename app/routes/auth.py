@@ -115,7 +115,7 @@ def login() :
     else :
         return jsonify(
             success=False,
-            message="Login failed. Please check your credentials and try again. ini test",
+            message="Login failed. Please check your credentials and try again.",
         ), 401
 # End Login
 
