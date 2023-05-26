@@ -6,12 +6,12 @@ POST /auth/register
 # Example Body
 Body:
 {
-    "name": "fahmi",
-    "email": "developer.zulfahmi@gmail.com",
+    "name": "kamil",
+    "email": "cepol501@gmail.com",
     "password": "123",
-    "phone": "085361626314",
-    "address": "buloh",
-    "birth_date": "2001-12-10"
+    "phone": "080800808090",
+    "address": "melbourne",
+    "birth_date": "2002-2-2"
 }
 
 # Example Response
