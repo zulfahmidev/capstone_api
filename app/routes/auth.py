@@ -31,7 +31,7 @@ def register() :
     birth_date = request.json.get('birth_date')
     password = request.json.get('password')
 
-    user = User.query.filter_by(email = email).one_or_none()
+    user = User.query.filter_by(email = email).first()
 
     if user is not None :
         return jsonify(
@@ -71,7 +71,7 @@ def verify_email(token):
             status=False,
             message='Token has been expired!.'
         ), 419
-    user = User.query.filter_by(email=email).one_or_none()
+    user = User.query.filter_by(email=email).first()
     if user.email_verified :
         return jsonify(
             status=False,
