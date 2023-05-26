@@ -90,7 +90,7 @@ def login() :
     email = request.json.get('email').lower()
     password = request.json.get('password')
 
-    user = User.query.filter_by(email = email).one_or_none()
+    user = User.query.filter_by(email = email).first()
 
     if user is not None and check_password_hash(user.password, str(password)) :
         if not bool(user.email_verified) :
@@ -123,7 +123,7 @@ def login() :
 @auth.route('/me', methods=['GET'])
 @Auth.login_required
 def me() :
-    user = User.query.filter_by(id=get_jwt_identity()).one_or_none()
+    user = User.query.filter_by(id=get_jwt_identity()).first()
     return jsonify(
         status=True,
         message="Data loaded successfully.",
@@ -147,7 +147,7 @@ def logout() :
 @auth.route('/forgot-password', methods=['POST'])
 def forgotPassword() :
     email = request.json.get('email')
-    user = User.query.filter_by(email=email).one_or_none()
+    user = User.query.filter_by(email=email).first()
     if user is not None :
         reset_token = secrets.token_hex(16)
         ResetPassword(email, reset_token)
