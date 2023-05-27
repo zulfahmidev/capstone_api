@@ -16,7 +16,7 @@ Body:
     "password": "<PASSWORD>",
     "phone": "<NO HP>",
     "address": "<ADDRESS>",
-    "birth_date": "<BIRTH_DATE>"
+    "birth_date": "<y-m-d>"
 }
 
 #Response
