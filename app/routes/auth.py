@@ -15,6 +15,7 @@ from app.models.ResetPassword import ResetPassword
 from utils import Auth
 
 from utils.Validator import Validator
+from sqlalchemy.orm.exc import NoResultFound, MultipleResultsFound
 
 auth = Blueprint('auth', __name__)
 
@@ -64,24 +65,31 @@ def send_email_verify(user) :
 # Verify Email
 @auth.route('/verify/<token>', methods=['GET'])
 def verify_email(token):
+    email = None
     try :
         email = verify_token(token)
+        print(email)
+        user = db.session.query(User).filter_by(email=email).one()
+        if user.email_verified :
+            return jsonify(
+                status=False,
+                message='Email Verified successfully.'), 400
+        else :
+            user.email_verified = True
+            user.save()
+            return jsonify(
+                status=True,
+                message='You have successfully verified your email!.'), 200
+    except MultipleResultsFound:
+        return jsonify(
+            status=False,
+            message='Something went wrong!.'
+        ), 500
     except :
         return jsonify(
             status=False,
             message='Token has been expired!.'
         ), 419
-    user = User.query.filter_by(email=email).first()
-    if user.email_verified :
-        return jsonify(
-            status=False,
-            message='Email Verified successfully.'), 400
-    else :
-        user.email_verified = True
-        user.save()
-        return jsonify(
-            status=True,
-            message='You have successfully verified your email!.'), 200
 # End Verify Email
 
 # Login
@@ -187,17 +195,17 @@ def resetPassword(token) :
 
 # Generate Verify Token
 def generate_verify_token(email) :
-    serializer = URLSafeTimedSerializer(os.getenv('APP_KEY'))
-    return serializer.dumps(email, salt=os.getenv('SECURITY_PASSWORD_SALT'))
+    serializer = URLSafeTimedSerializer('secret_key')
+    return serializer.dumps(email, salt='salt_key')
 # End Generate Verify Token
 
 # Check Verify Token
 def verify_token(token, expiration=3600) :
-    serializer = URLSafeTimedSerializer(os.getenv('APP_KEY'))
+    serializer = URLSafeTimedSerializer('secret_key')
     try :
         email = serializer.loads(
             token,
-            salt=os.getenv['SECRET_PASSWORD_SALT'],
+            salt='salt_key',
             max_age=expiration
         )
     except:
