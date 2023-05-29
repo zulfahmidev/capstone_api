@@ -3,3 +3,4 @@ public/*
 .env
 **/__pycache__/
 credentials.json
+migrations/
