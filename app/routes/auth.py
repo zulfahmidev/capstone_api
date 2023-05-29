@@ -198,7 +198,7 @@ def forgotPassword() :
         return jsonify(
             status=True,
             message="Token reset has been successfully generated.",
-            body= {
+            data= {
                 "reset_token": reset_token,
             }
         ), 200
