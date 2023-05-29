@@ -37,6 +37,7 @@ class User(db.Model) :
        if self.picture is not None :
         picture = URL.baseURL("uploads/" + str(self.picture))
        return {
+           "id": self.id,
            "name": self.name,
            "email": self.email,
            "birth_date": self.birth_date,

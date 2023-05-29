@@ -6,6 +6,8 @@
 - [Show Logged In Account Data](#show-logged-in-account-data)
 - [Forgot Password](#forgot-password)
 - [Reset Password](#reset-password)
+- [Show User Account](#show-user-account)
+- [Edit User Account](#edit-user-account)
 
 ## Register Account
 
@@ -51,8 +53,8 @@ Content-Type:application/json
 ### Request
 ```
 {
-    "email":"<EMAIL>",
-    "password":"<PASSWORD>"
+    "email": "<EMAIL>",
+    "password": "<PASSWORD>"
 }
 ```
 ### Response
@@ -79,6 +81,7 @@ GET <BASE_URL>/auth/me
         "birth_date": "Sat, 02 Feb 2002 00:00:00 GMT",
         "created_at": "Sun, 28 May 2023 22:51:06 GMT",
         "email": "account_email**",
+        "id": "user_id**"
         "name": "account_name**",
         "phone": "phone*",
         "picture": "picture_url**"
@@ -132,6 +135,57 @@ Content-Type:application/json
 ```
 {
     "message": "Password successfully changed.",
+    "status": true
+}
+```
+
+## Show User Account
+### Endpoint
+```
+GET <BASE_URL>/user/<id>
+```
+### Response
+```
+{
+    "data": {
+        "address": "account_address**",
+        "birth_date": "Sat, 02 Feb 2002 00:00:00 GMT",
+        "created_at": "Sun, 28 May 2023 22:51:06 GMT",
+        "email": "account_email**",
+        "id": "user_id**"
+        "name": "account_name**",
+        "phone": "phone*",
+        "picture": "picture_url**"
+    },
+    "message": "Data loaded successfully.",
+    "status": true
+}
+```
+
+## Edit User Account
+### Endpoint
+```
+PUT <BASE_URL>/user/<id>
+```
+### Headers
+```
+Content-Type:application/json
+```
+### Request
+```
+{
+    "name": "<NAME>",
+    "email": "<EMAIL>",
+    "phone": "<NO HP>",
+    "address": "<ADDRESS>",
+    "birth_date": "<YYYY-MM-DD>",
+    "picture": "<BASE64_IMAGE>",
+}
+```
+### Response
+```
+{
+    "message": "Data succesfully updated.",
     "status": true
 }
 ```
