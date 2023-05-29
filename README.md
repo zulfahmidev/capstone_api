@@ -96,7 +96,7 @@ POST <BASE_URL>/auth/forgot-password
 ```
 Content-Type:application/json
 ```
-### Requst
+### Request
 ```
 {
     "email": "<EMAIL>"
