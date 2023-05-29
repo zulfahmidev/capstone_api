@@ -1,11 +1,11 @@
-# Rest API - Arahku
+# Documentation Rest API - Arahku
 
 ## List of Contents
 - [Register Account](#register-account)
 - [Login Account](#login-account)
 - [Show Logged In Account Data](#show-logged-in-account-data)
 - [Forgot Password](#forgot-password)
-- [API FOR RESET PASSWORD](#api-for-reset-password)
+- [Reset Password](#reset-password)
 
 ## Register Account
 
@@ -113,7 +113,7 @@ Content-Type:application/json
 }
 ```
 
-## API FOR RESET PASSWORD
+## Reset Password
 ### Endpoint
 ```
 POST <URL>/auth/reset-password/<token>
