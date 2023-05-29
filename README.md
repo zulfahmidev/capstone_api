@@ -17,7 +17,7 @@ POST <URL>/auth/register
 ```
 Content-Type:application/json
 ```
-### Example Request
+### Request
 ```
 {
     "name": "<NAME>",
@@ -48,7 +48,7 @@ POST <URL>/auth/login
 ```
 Content-Type:application/json
 ``` 
-### Example Request
+### Request
 ```
 {
     "email":"<EMAIL>",
@@ -71,7 +71,7 @@ Content-Type:application/json
 ```
 GET <URL>/auth/me
 ```
-### Example Reponse
+### Reponse
 ```
 {
     "data": {
@@ -96,7 +96,7 @@ POST <URL>/auth/forgot-password
 ```
 Content-Type:application/json
 ```
-### Example Requst
+### Requst
 ```
 {
     "email": "<EMAIL>"
@@ -122,7 +122,7 @@ POST <URL>/auth/reset-password/<token>
 ```
 Content-Type:application/json
 ```
-### Example Request
+### Request
 ```
 {
     "password": "<NEW PASSWORD>"
