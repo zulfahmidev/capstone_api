@@ -105,7 +105,7 @@ Content-Type:application/json
 ### Response
 ```
 {
-    "body": {
+    "data": {
         "reset_token": "reset_token**"
     },
     "message": "Token reset has been successfully generated.",
