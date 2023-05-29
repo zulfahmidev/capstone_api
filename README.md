@@ -11,7 +11,7 @@
 
 ### Endpoint
 ```
-POST <URL>/auth/register
+POST <BASE_URL>/auth/register
 ```
 ### Headers
 ```
@@ -42,7 +42,7 @@ Check your mailbox after registered for verify your email. This is an example em
 ## Login Account
 ### Endpoint
 ```
-POST <URL>/auth/login
+POST <BASE_URL>/auth/login
 ```
 ### Headers
 ```
@@ -69,7 +69,7 @@ Content-Type:application/json
 ## Show Logged In Account Data
 ### Endpoint
 ```
-GET <URL>/auth/me
+GET <BASE_URL>/auth/me
 ```
 ### Reponse
 ```
@@ -90,7 +90,7 @@ GET <URL>/auth/me
 ## Forgot Password
 ### Endpoint
 ```
-POST <URL>/auth/forgot-password
+POST <BASE_URL>/auth/forgot-password
 ```
 ### Headers
 ```
@@ -116,7 +116,7 @@ Content-Type:application/json
 ## Reset Password
 ### Endpoint
 ```
-POST <URL>/auth/reset-password/<token>
+POST <BASE_URL>/auth/reset-password/<token>
 ```
 ### Headers
 ```
