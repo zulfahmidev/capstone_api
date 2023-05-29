@@ -1,25 +1,28 @@
 # Documentation Rest API - Arahku
 
 ## List of Contents
-***Authentication***
-- [Register Account](#register-account)
-- [Login Account](#login-account)
-- [Show Logged In Account Data](#show-logged-in-account-data)
-- [Forgot Password](#forgot-password)
-- [Reset Password](#reset-password)
-***User Account***
-- [Show User Account](#show-user-account)
-- [Edit User Account](#edit-user-account)
-***Major Category***
-- [Show Major Category](#show-major-category)
-- [Add Major Category](#add-major-category)
-- [Edit Major Category](#edit-major-category)
-- [Delete Major Category](#delete-major-category)
-***Major***
-- [Show Major](#show-major)
-- [Add Major](#add-major)
-- [Edit Major](#edit-major)
-- [Delete Major](#delete-major)
+- Authentication
+  - [Register Account](#register-account)
+  - [Login Account](#login-account)
+  - [Show Logged In Account Data](#show-logged-in-account-data)
+  - [Forgot Password](#forgot-password)
+  - [Reset Password](#reset-password)
+
+- User Account
+  - [Show User Account](#show-user-account)
+  - [Edit User Account](#edit-user-account)
+
+- Major Category
+  - [Show Major Category](#show-major-category)
+  - [Add Major Category](#add-major-category)
+  - [Edit Major Category](#edit-major-category)
+  - [Delete Major Category](#delete-major-category)
+
+- Major
+  - [Show Major](#show-major)
+  - [Add Major](#add-major)
+  - [Edit Major](#edit-major)
+  - [Delete Major](#delete-major)
 
 ## Register Account
 
