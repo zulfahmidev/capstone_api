@@ -25,7 +25,7 @@ Content-Type:application/json
     "password": "<PASSWORD>",
     "phone": "<NO HP>",
     "address": "<ADDRESS>",
-    "birth_date": "<y-m-d>"
+    "birth_date": "<YYYY-MM-DD>"
 }
 ```
 ### Response
