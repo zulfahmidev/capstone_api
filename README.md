@@ -81,7 +81,7 @@ GET <BASE_URL>/auth/me
         "birth_date": "Sat, 02 Feb 2002 00:00:00 GMT",
         "created_at": "Sun, 28 May 2023 22:51:06 GMT",
         "email": "account_email**",
-        "id": "user_id**"
+        "id": user_id**
         "name": "account_name**",
         "phone": "phone*",
         "picture": "picture_url**"
@@ -152,7 +152,7 @@ GET <BASE_URL>/user/<id>
         "birth_date": "Sat, 02 Feb 2002 00:00:00 GMT",
         "created_at": "Sun, 28 May 2023 22:51:06 GMT",
         "email": "account_email**",
-        "id": "user_id**"
+        "id": user_id**
         "name": "account_name**",
         "phone": "phone*",
         "picture": "picture_url**"
@@ -186,6 +186,219 @@ Content-Type:application/json
 ```
 {
     "message": "Data succesfully updated.",
+    "status": true
+}
+```
+
+## Show Major Category
+### Endpoint
+```
+GET <BASE_URL>/major/category
+```
+### Response
+```
+{
+    "data": [
+        {
+            "created_at": "Mon, 29 May 2023 09:22:02 GMT",
+            "id": major_category_id**,
+            "name": "category_name**"
+        }
+    ],
+    "message": "Data loaded successfully.",
+    "status": true
+}
+```
+
+## Add Major Category
+### Endpoint
+```
+POST <BASE_URL>/major/category
+```
+### Headers
+```
+Content-Type:application/json
+```
+### Request
+```
+{
+    "name": "<CATEGORY NAME>"
+}
+```
+### Response
+```
+{
+    "data": {
+        "created_at": "Mon, 29 May 2023 09:22:02 GMT",
+        "id": major_category_id**,
+        "name": "category_name**"
+    },
+    "message": "Category successfully created.",
+    "status": true
+}
+```
+
+## Edit Major Category
+### Endpoint
+```
+PUT <BASE_URL>/major/category/<id>
+```
+### Headers
+```
+Content-Type:application/json
+```
+### Request
+```
+{
+    "name": "<CATEGORY NAME>"
+}
+```
+### Response
+```
+{
+    "message": "Category successfully updated.",
+    "status": true
+}
+```
+
+## Delete Major Category
+### Endpoint
+```
+DELETE <BASE_URL>/major/category/<id>
+```
+### Response
+```
+{
+    "data": [
+        {
+            "created_at": "Mon, 29 May 2023 09:22:02 GMT",
+            "id": major_category_id**,
+            "name": "category_name**"
+        }
+    ],
+    "message": "Category successfully destroyed.",
+    "status": true
+}
+```
+
+## Show Major
+### Endpoint
+```
+GET <BASE_URL>/major
+```
+### Response
+```
+{
+    "data": [
+        {
+            "category": {
+                "created_at": "Mon, 29 May 2023 09:22:02 GMT",
+                "id": major_category_id**,
+                "name": "category_name**"
+            },
+            "created_at": "Mon, 29 May 2023 12:14:14 GMT",
+            "description": "description**",
+            "id": major_id**,
+            "name": "major_name**"
+        }
+    ],
+    "message": "Data loaded successfully.",
+    "status": true
+}
+```
+
+## Add Major
+### Endpoint
+```
+POST <BASE_URL>/major
+```
+### Headers
+```
+Content-Type:application/json
+```
+### Request
+```
+{
+    "name": "<NAME>",
+    "description": "<DESCRIPTION>",
+    "id_category": "<MAJOR CATEGORY ID>"
+}
+```
+### Response
+```
+{
+    "data": {
+        "category": {
+            "created_at": "Mon, 29 May 2023 09:22:02 GMT",
+            "id": major_category_id**,
+            "name": "category_name**"
+        },
+        "created_at": "Mon, 29 May 2023 12:14:14 GMT",
+        "description": "description**",
+        "id": major_id**,
+        "name": "major_name**"
+    },
+    "message": "Major successfully created.",
+    "status": true
+}
+```
+
+## Edit Major Category
+### Endpoint
+```
+PUT <BASE_URL>/major/<id>
+```
+### Headers
+```
+Content-Type:application/json
+```
+### Request
+```
+{
+    "name": "<NAME>",
+    "description": "<DESCRIPTION>",
+    "id_category": "<MAJOR CATEGORY ID>"
+}
+```
+### Response
+```
+{
+    "data": {
+        "category": {
+            "created_at": "Mon, 29 May 2023 09:22:02 GMT",
+            "id": major_category_id**,
+            "name": "category_name**"
+        },
+        "created_at": "Mon, 29 May 2023 12:14:14 GMT",
+        "description": "description**",
+        "id": major_id**,
+        "name": "major_name**"
+    },
+    "message": "Major successfully updated.",
+    "status": true
+}
+```
+
+## Delete Major Category
+### Endpoint
+```
+DELETE <BASE_URL>/major/category/<id>
+```
+### Response
+```
+{
+    "data": {
+        "category": {
+            "created_at": "Mon, 29 May 2023 09:22:02 GMT",
+            "id": major_category_id**,
+            "name": "category_name**"
+        },
+        "created_at": "Mon, 29 May 2023 12:14:14 GMT",
+        "description": "description**",
+        "id": major_id**,
+        "name": "major_name**"
+    },
+    "message": "Major successfully destroyed.",
     "status": true
 }
 ```
