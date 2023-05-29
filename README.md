@@ -8,6 +8,14 @@
 - [Reset Password](#reset-password)
 - [Show User Account](#show-user-account)
 - [Edit User Account](#edit-user-account)
+- [Show Major Category](#show-major-category)
+- [Add Major Category](#add-major-category)
+- [Edit Major Category](#edit-major-category)
+- [Delete Major Category](#delete-major-category)
+- [Show Major](#show-major)
+- [Add Major](#add-major)
+- [Edit Major](#edit-major)
+- [Delete Major](#delete-major)
 
 ## Register Account
 
@@ -343,7 +351,7 @@ Content-Type:application/json
 }
 ```
 
-## Edit Major Category
+## Edit Major
 ### Endpoint
 ```
 PUT <BASE_URL>/major/<id>
@@ -379,7 +387,7 @@ Content-Type:application/json
 }
 ```
 
-## Delete Major Category
+## Delete Major
 ### Endpoint
 ```
 DELETE <BASE_URL>/major/category/<id>
