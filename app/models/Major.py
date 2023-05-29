@@ -1,5 +1,6 @@
 from extensions import db
 from datetime import datetime
+from app.models.MajorCategory import MajorCategory
 
 class Major(db.Model) :
   
@@ -16,3 +17,30 @@ class Major(db.Model) :
       self.description = description
       self.id_category = id_category
       self.created_at = datetime.now()
+      self.save()
+      
+    def destroy(self) :
+      db.session.delete(self)
+      db.session.commit()
+    
+    def update(self, name: str, description: str, id_category: int) :
+      self.name = name
+      self.description = description
+      self.id_category = id_category
+      self.save()
+
+    def save(self) :
+      db.session.add(self)
+      db.session.commit()
+      
+    def getCategory(self) -> MajorCategory :
+      return MajorCategory.query.get(self.id_category)
+    
+    def asDict(self) :
+      return {
+        "id": self.id,
+        "name": self.name,
+        "description": self.description,
+        "category": self.getCategory().asDict(),
+        "created_at": self.created_at,
+      }

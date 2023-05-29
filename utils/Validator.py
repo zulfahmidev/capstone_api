@@ -1,6 +1,8 @@
 import base64
 import imghdr
 import io
+import re
+from datetime import datetime 
 
 class Validator :
   
@@ -20,10 +22,18 @@ class Validator :
         if rule == 'required' :
           if k not in self.files and value is None :
             self.errors.append(f'The {k} field is required.')
+        if rule == 'integer' :
+          if value is not None :
+            if not isinstance(value, int):
+              self.errors.append(f'The {k} is not am integer.')
         if rule == 'numeric' :
           if value is not None :
             if not value.isdigit():
               self.errors.append(f'The {k} does not contain a numeric value.')
+        if rule == 'email' :
+          if value is not None :
+            if not is_valid_email(value):
+              self.errors.append(f'The {k} does not contain a valid email address.')
         if rule == 'string' :
           if value is not None :
             if not isinstance(value, str):
@@ -42,6 +52,10 @@ class Validator :
           if value is not None :
             if (not isBase64Image(value)) :
               self.errors.append(f'The {k} is not a Base64 Image.')
+        if rule == 'date' :
+          if value is not None :
+            if (not is_valid_date(value, "%Y-%m-%d")) :
+              self.errors.append(f'The {k} does not match the expected format YYYY-MM-DD.')
           
     return len(self.errors) == 0
 
@@ -56,3 +70,14 @@ def isBase64Image(base64_image) :
     return img_type is not None
   except base64.binascii.Error :
     return False
+
+def is_valid_email(email):
+    pattern = r'^[\w\.-]+@[\w\.-]+\.\w+$'
+    return re.match(pattern, email) is not None
+  
+def is_valid_date(date_string, format):
+    try:
+        datetime.strptime(date_string, format)
+        return True
+    except ValueError:
+        return False

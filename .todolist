@@ -10,6 +10,13 @@ Change Pass : Selesai
 Show User   : 
 Update      :
 
+# Majors
+Get All     :
+Get One     :
+Store       :
+Update      :
+Destroy     :
+
 # Kuis / Tes
 Create Quiz :
 - Questions :

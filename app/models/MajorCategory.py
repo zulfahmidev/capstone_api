@@ -15,8 +15,8 @@ class MajorCategory(db.Model) :
       self.save()
     
     def destroy(self) :
-        self.destroy_at = datetime.now()
-        self.save()
+      db.session.delete(self)
+      db.session.commit()
 
     def save(self) :
       db.session.add(self)
@@ -24,6 +24,7 @@ class MajorCategory(db.Model) :
     
     def asDict(self) :
       return {
+        "id": self.id,
         "name": self.name,
         "created_at": self.created_at,
       }

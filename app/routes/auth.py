@@ -22,8 +22,21 @@ auth = Blueprint('auth', __name__)
 # Register
 @auth.route('/register', methods=['POST'])
 def register() :
+    val = Validator(request, {
+        'name': ['required', 'string'],
+        'email': ['required', 'email'],
+        'phone': ['required', 'numeric'],
+        'address': ['required', 'string'],
+        'birth_date': ['required', 'date'],
+        'password': ['required', 'string'],
+    })
     
-    # Belum Ada Validasi
+    if not val.validate() :
+        return jsonify(
+        status=False,
+        message='Invalid field.',
+        errors=val.getErrors()
+        ), 400
     
     name = request.json.get('name').lower()
     email = request.json.get('email').lower()
@@ -95,6 +108,18 @@ def verify_email(token):
 # Login
 @auth.route('/login', methods=['POST'])
 def login() :
+    val = Validator(request, {
+        'email': ['required', 'email'],
+        'password': ['required', 'string'],
+    })
+    
+    if not val.validate() :
+        return jsonify(
+        status=False,
+        message='Invalid field.',
+        errors=val.getErrors()
+        ), 400
+        
     email = request.json.get('email').lower()
     password = request.json.get('password')
 
@@ -154,6 +179,17 @@ def logout() :
 # Forgot Password
 @auth.route('/forgot-password', methods=['POST'])
 def forgotPassword() :
+    val = Validator(request, {
+        'email': ['required', 'email'],
+    })
+    
+    if not val.validate() :
+        return jsonify(
+        status=False,
+        message='Invalid field.',
+        errors=val.getErrors()
+        ), 400
+        
     email = request.json.get('email')
     user = User.query.filter_by(email=email).first()
     if user is not None :
@@ -175,6 +211,17 @@ def forgotPassword() :
 # Reset Password
 @auth.route('/reset-password/<token>', methods=['POST'])
 def resetPassword(token) :
+    val = Validator(request, {
+        'password': ['required', 'string'],
+    })
+    
+    if not val.validate() :
+        return jsonify(
+        status=False,
+        message='Invalid field.',
+        errors=val.getErrors()
+        ), 400
+        
     rp = ResetPassword.query.filter_by(reset_token=token).first()
     if rp is not None :
         password = request.json.get('password')

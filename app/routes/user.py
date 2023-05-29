@@ -29,7 +29,7 @@ def show(id) :
 def update(id) :
     val = Validator(request, {
         'name': ['string'],
-        'birth_date': ['string'],
+        'birth_date': ['string', 'date'],
         'phone': ['string', 'numeric'],
         'address': ['string'],
         'picture': ['string', 'base64', 'image'],
