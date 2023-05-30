@@ -11,16 +11,12 @@ class Response(db.Model) :
   __tablename__ = 'responses'
   
   id = db.Column(db.Integer, primary_key=True)
-  user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-  form_id = db.Column(db.Integer, db.ForeignKey('forms.id'))
-  field_id = db.Column(db.Integer, db.ForeignKey('fields.id'))
-  option_id = db.Column(db.Integer, db.ForeignKey('options.id'))
+  user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'))
+  option_id = db.Column(db.Integer, db.ForeignKey('options.id', ondelete='CASCADE'))
   created_at = db.Column(db.DateTime, nullable=False)
   
-  def __init__(self, user_id: int, form_id: int, field_id: int, option_id: int) :
+  def __init__(self, user_id: int, option_id: int) :
     self.user_id = user_id
-    self.form_id = form_id
-    self.field_id = field_id
     self.option_id = option_id
     self.created_at = datetime.now()
     self.save()
@@ -29,9 +25,8 @@ class Response(db.Model) :
     db.session.delete(self)
     db.session.commit()
   
-  def update(self, user_id: int, form_id: int, field_id: int, option_id: int) :
+  def update(self, user_id: int, option_id: int) :
     self.user_id = user_id
-    self.field_id = field_id
     self.option_id = option_id
     self.save()
 
@@ -41,9 +36,9 @@ class Response(db.Model) :
   
   def asDict(self) :
     user = User.query.get(self.user_id)
-    form = Form.query.get(self.form_id)
-    field = Field.query.get(self.field_id)
     option = Option.query.get(self.option_id)
+    field = Field.query.get(option.field_id)
+    form = Form.query.get(field.form_id)
     return {
       "id": self.id,
       "user_id": {

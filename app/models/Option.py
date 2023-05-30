@@ -6,7 +6,7 @@ class Option(db.Model) :
   __tablename__ = 'options'
   
   id = db.Column(db.Integer, primary_key=True)
-  field_id = db.Column(db.Integer, db.ForeignKey('fields.id'))
+  field_id = db.Column(db.Integer, db.ForeignKey('fields.id', ondelete='CASCADE'))
   value = db.Column(db.String(255), nullable=False)
   created_at = db.Column(db.DateTime, nullable=False)
   

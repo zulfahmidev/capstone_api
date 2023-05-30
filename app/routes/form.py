@@ -11,8 +11,12 @@ form_route = Blueprint('form', __name__)
 
 # Get Form
 @form_route.route('/', methods=['GET'])
-def index() :
-  forms = [v.asDict() for v in Form.query.all()]
+def getAll() :
+  forms = [{
+    'id': v.id,
+    'title': v.title,
+    'description': v.description, 
+  } for v in Form.query.all()]
   return jsonify(
     status=True,
     message='Data loaded successfully.',
@@ -21,7 +25,7 @@ def index() :
   
 # Get One Form
 @form_route.route('/<id>', methods=['GET'])
-def show(id) :
+def get(id) :
   form = Form.query.get(id)
   if form :
     return jsonify(
@@ -113,11 +117,71 @@ def destroy(id) :
     message='Form not found.',
   ), 404
 
+
 # Get Field
+@form_route.route('/field/<id>', methods=['GET'])
+def getField(id) :
+  field = Field.query.get(id)
+  if field :
+    return jsonify(
+      status=True,
+      message='Data loaded successfully.',
+      data=field.asDict()
+    ), 200
+  return jsonify(
+    status=False,
+    message='Field not found.',
+  ), 404
 
 # Create Field
+@form_route.route('/field', methods=['POST'])
+def storeField() :
+  val = Validator(request, {
+    'label': ['required', 'string'],
+    'form_id': ['required', 'integer', f'exists: forms, id']
+  })
+  if not val.validate():
+    return jsonify(
+      status=False,
+      message='Invalid field.',
+      errors= val.getErrors()
+    ), 400
+  
+  field = Field(
+    form_id=request.json.get('form_id'), 
+    label=request.json.get('label').strip()
+  )
+  
+  return jsonify(
+    status=True,
+      message='Field successfully created.',
+    data=field.asDict()
+  ), 200
 
 # Update Field
+@form_route.route('/field/<id>', methods=['POST'])
+def updateField(id) :
+  val = Validator(request, {
+    'label': ['required', 'string']
+  })
+  if not val.validate():
+    return jsonify(
+      status=False,
+      message='Invalid field.',
+      errors= val.getErrors()
+    ), 400
+  
+  field = Field.query.get(id)
+  if field :
+    return jsonify(
+      status=True,
+      message='Data loaded successfully.',
+      data=field.asDict()
+    ), 200
+  return jsonify(
+    status=False,
+    message='Field not found.',
+  ), 404
 
 # Delete Field
 
