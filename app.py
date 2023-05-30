@@ -4,8 +4,9 @@ from app import app, db, mgr
 if __name__ == '__main__' :
     with app.app_context():
         # Migrate the database
-        os.system('flask db init')
+        if not os.path.exists('migrations') :
+            os.system('flask db init')
         os.system('flask db migrate')
         os.system('flask db upgrade')
 
-    app.run(debug=os.getenv('APP_DEBUG'), host='0.0.0.0')
+    app.run(debug=os.getenv('APP_DEBUG'), host=os.getenv('APP_HOST'))
