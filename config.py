@@ -7,9 +7,9 @@ class InitConfig() :
 
     def __init__(self, app) :
         # Set ENV
-        set_key('.env', 'APP_KEY', secrets.token_hex(16))
-        set_key('.env', 'JWT_KEY', secrets.token_hex(16))
-        set_key('.env', 'SECURITY_PASSWORD_SALT', secrets.token_hex(16))
+        # set_key('.env', 'APP_KEY', secrets.token_hex(16))
+        # set_key('.env', 'JWT_KEY', secrets.token_hex(16))
+        # set_key('.env', 'SECURITY_PASSWORD_SALT', secrets.token_hex(16))
 
         # Database Configuration
         db_config = {
