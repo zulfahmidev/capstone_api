@@ -5,13 +5,13 @@ steps:
 
   # Menyiapkan lingkungan Docker
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/my-docker-image:${_ID}', 'capstone_api']
+    args: ['build', '-t', 'gcr.io/capstone-project-arahku/my-docker-image:${_ID}', 'capstone_api']
     env:
       - 'ID=$(date +%Y%m%d%H%M%S)'
 
   # Menyimpan Docker image ke GCS
   - name: 'gcr.io/cloud-builders/gsutil'
-    args: ['cp', 'gcr.io/$PROJECT_ID/my-docker-image:${_ID}', 'gs://my-bucket/my-docker-image-${_ID}']
+    args: ['cp', 'gcr.io/capstone-project-arahku/my-docker-image:capstone-project-arahku', 'gs://my-bucket/my-docker-image-${_ID}']
 
 images:
-  - 'gcr.io/$PROJECT_ID/my-docker-image:${_ID}'
+  - 'gcr.io/capstone-project-arahku/my-docker-image:${_ID}'
