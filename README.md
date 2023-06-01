@@ -88,6 +88,10 @@ Content-Type:application/json
 ```
 GET <BASE_URL>/auth/me
 ```
+### isi token
+```
+masukan token <barier token : "token">
+```
 ### Reponse
 ```
 {
@@ -139,6 +143,10 @@ POST <BASE_URL>/auth/reset-password/<token>
 ### Headers
 ```
 Content-Type:application/json
+```
+### isi token
+```
+masukan token <barier token : "token">
 ```
 ### Request
 ```
