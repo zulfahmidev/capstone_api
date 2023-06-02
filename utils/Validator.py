@@ -63,8 +63,8 @@ class Validator :
               self.errors.append(f'The {k} is not a Base64 Image.')
         elif key == 'date' :
           if value is not None :
-            if (not is_valid_date(value, "%Y-%m-%d")) :
-              self.errors.append(f'The {k} does not match the expected format YYYY-MM-DD.')
+            if (not is_valid_date(value, "%d-%m-%Y")) :
+              self.errors.append(f'The {k} does not match the expected format DD-MM-YYYY.')
         elif key == 'exists' :
           if value is not None :
             res = exists(value, args[0], args[1])
