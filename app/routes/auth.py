@@ -38,8 +38,8 @@ def register() :
         errors=val.getErrors()
         ), 400
     
-    name = request.json.get('name').lower()
-    email = request.json.get('email').lower()
+    name = request.json.get('name')
+    email = request.json.get('email')
     phone = request.json.get('phone')
     address = request.json.get('address')
     birth_date = request.json.get('birth_date')
@@ -81,7 +81,6 @@ def verify_email(token):
     email = None
     try :
         email = verify_token(token)
-        print(email)
         user = db.session.query(User).filter_by(email=email).one()
         if user.email_verified :
             return jsonify(
@@ -227,8 +226,9 @@ def resetPassword(token) :
         password = request.json.get('password')
         user = User.query.filter_by(email=rp.email).first()
         if user is not None :
-            user.password = generate_password_hash(password)
-            user.save()
+            user.update({
+                "password": generate_password_hash(password.strip())
+            })
             rp.destroy()
             return jsonify(
                 status=True,

@@ -20,9 +20,10 @@ class Option(db.Model) :
     db.session.delete(self)
     db.session.commit()
   
-  def update(self, field_id: int, value: str) :
-    self.field_id = field_id
-    self.value = value
+  def update(self, fields: dict = {}) :
+    for field in fields :
+        if fields[field] :
+          setattr(self, field, fields[field])
     self.save()
 
   def save(self) :
