@@ -1,17 +1,8 @@
 steps:
-  # Mengambil file dari GitHub
-  - name: 'gcr.io/cloud-builders/git'
-    args: ['clone', 'https://github.com/zulfahmidev/capstone_api.git']
-
-  # Menyiapkan lingkungan Docker
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/capstone-project-arahku/my-docker-image:${_ID}', 'capstone_api']
-    env:
-      - 'ID=$(date +%Y%m%d%H%M%S)'
-
-  # Menyimpan Docker image ke GCS
-  - name: 'gcr.io/cloud-builders/gsutil'
-    args: ['cp', 'gcr.io/capstone-project-arahku/my-docker-image:capstone-project-arahku', 'gs://my-bucket/my-docker-image-${_ID}']
-
-images:
-  - 'gcr.io/capstone-project-arahku/my-docker-image:${_ID}'
+  - name: gcr.io/cloud-builders/gcloud
+    args:
+      - '-c'
+      - >
+        vmlist=$(gcloud compute instances list --format='value(name)' --filter="labels.${_VM_LABEL_KEY}:${_VM_LABEL_VALUE} AND status:RUNNING") && for vm in $vmlist; do gcloud compute ssh cloudbuild@$vm --zone $(gcloud compute instances list --format='value(zone)' --filter="name='$vm'") --quiet -- 'gsutil cp gs://private-capstone/start.sh . && sudo chmod +x start.sh && sudo sh start.sh '; done
+    entrypoint: bash
+  
