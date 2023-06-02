@@ -21,7 +21,7 @@ def store() :
   val = Validator(request, {
     'name': ['required', 'string'],
     'description': ['required', 'string'],
-    'id_category': ['required', 'integer'],
+    'id_category': ['required', 'integer', 'exists:major_categories,id'],
   })
   
   if not val.validate() :
@@ -32,7 +32,7 @@ def store() :
     ), 400
   
   major = Major(
-    name=request.json.get('name').lower(),
+    name=request.json.get('name'),
     description=request.json.get('description'),
     id_category=request.json.get('id_category'),
   )
@@ -48,7 +48,7 @@ def update(id) :
   val = Validator(request, {
     'name': ['string'],
     'description': ['string'],
-    'id_category': ['integer'],
+    'id_category': ['integer', 'exists:major_categories,id'],
   })
   
   if not val.validate() :
@@ -61,11 +61,11 @@ def update(id) :
   major = Major.query.get(id)
   
   if major :
-    major.update(
-      name=request.json.get('name').lower(),
-      description=request.json.get('description'),
-      id_category=request.json.get('id_category'),
-    )
+    major.update({
+      'name':request.json.get('name').lower().strip() if request.json.get('name') else None,
+      'description':request.json.get('description'),
+      'id_category':request.json.get('id_category'),
+    })
     return jsonify(
       status=True,
       message='Major successfully updated.',
@@ -117,7 +117,7 @@ def storeCategory() :
       errors=val.getErrors()
     ), 400
   
-  category = MajorCategory(request.json.get('name').lower())
+  category = MajorCategory(request.json.get('name'))
   return jsonify(
     status=True,
     message='Category successfully created.',
@@ -154,8 +154,9 @@ def updateCategory(id) :
   
   category = MajorCategory.query.get(id)
   if category :
-    category.name = request.json.get('name').lower()
-    category.save()
+    category.update({
+      'name':request.json.get('name').lower().strip() if request.json.get('name') else None
+    })
     return jsonify(
       status=True,
       message='Category successfully updated.'

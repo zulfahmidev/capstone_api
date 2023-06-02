@@ -21,32 +21,43 @@ class User(db.Model) :
 
     def __init__(self, name, email, password, birth_date, phone=None, address=None) :
 
-        y, m, d = birth_date.split('-')
+        d, m, y = birth_date.strip().split('-')
 
-        self.name = name
-        self.email = email
-        self.password = generate_password_hash(password)
+        self.name = name.strip().lower()
+        self.email = email.strip().lower()
+        self.password = generate_password_hash(password.strip())
         self.birth_date = datetime(int(y), int(m), int(d))
-        self.phone = phone
-        self.address = address
+        self.phone = phone.strip()
+        self.address = address.strip()
         self.created_at = datetime.now()
         self.save()
+        
 
     def as_dict(self):
-       picture = URL.baseURL("images/default.jpg")
-       if self.picture is not None :
-        picture = URL.baseURL("uploads/" + str(self.picture))
-       return {
-           "id": self.id,
-           "name": self.name,
-           "email": self.email,
-           "birth_date": self.birth_date,
-           "phone": self.phone,
-           "address": self.address,
-           "picture": picture,
-           "created_at": self.created_at,
-       }
+        picture = URL.StorageURL("default.jpg")
+        if self.picture is not None :
+            picture = URL.StorageURL('uploads/'+self.picture)
+        return {
+            "id": self.id,
+            "name": self.name,
+            "email": self.email,
+            "birth_date": self.birth_date,
+            "phone": self.phone,
+            "address": self.address,
+            "picture": picture,
+            "created_at": self.created_at,
+        }
+      
+    def destroy(self) :
+        db.session.delete(self)
+        db.session.commit()
+    
+    def update(self, fields: dict = {}) :
+        for field in fields :
+            if fields[field] :
+                setattr(self, field, fields[field])
+        self.save()
 
     def save(self) :
-      db.session.add(self)
-      db.session.commit()
+        db.session.add(self)
+        db.session.commit()
