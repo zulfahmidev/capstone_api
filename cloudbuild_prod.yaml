@@ -2,22 +2,20 @@ steps:
   - name: 'gcr.io/cloud-builders/git'
     args: [
       'clone',
-      '-b',
-      'staging',
-      'https://github.com/sepol-sys/capstone_api.git'
+      'https://github.com/zulfahmidev/capstone_api.git'
     ]
 
   - name: 'gcr.io/cloud-builders/gsutil'
     args: [
       'cp', 
-      'gs://private-capstone/dev/.env', 
+      'gs://private-capstone/prod/.env', 
       'file-env'
     ]
 
   - name: 'gcr.io/cloud-builders/gsutil'
     args: [
       'cp', 
-      'gs://private-capstone/dev/credentials.json', 
+      'gs://private-capstone/prod/credentials.json', 
       'file-credential'
     ]
 
