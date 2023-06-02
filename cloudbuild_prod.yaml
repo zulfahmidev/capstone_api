@@ -1,0 +1,58 @@
+steps:
+  - name: 'gcr.io/cloud-builders/git'
+    args: [
+      'clone',
+      'https://github.com/zulfahmidev/capstone_api.git'
+    ]
+
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args: [
+      'cp', 
+      'gs://private-capstone/prod/.env', 
+      'file-env'
+    ]
+
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args: [
+      'cp', 
+      'gs://private-capstone/prod/credentials.json', 
+      'file-credential'
+    ]
+
+  - name: 'gcr.io/cloud-builders/docker' 
+    args: [
+      'build',
+      '-t', 
+      'asia-southeast2-docker.pkg.dev/capstone-project-arahku/capstone/capstone_api_prod$SHORT_SHA',
+      '--build-arg', 'ENV_FILE=file-env',
+      '--build-arg', 'CREDENTIAL_FILE=file-credential',
+      '.'
+    ]
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [
+      'tag',
+      'asia-southeast2-docker.pkg.dev/capstone-project-arahku/capstone/capstone_api_prod$SHORT_SHA',
+      'gcr.io/capstone-project-arahku/staging/capstone_api_prod$SHORT_SHA'
+    ]
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [
+      'push',
+      'asia-southeast2-docker.pkg.dev/capstone-project-arahku/capstone/capstone_api_prod$SHORT_SHA'
+    ]
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: [
+      'run',
+      'deploy',
+      'capstone-arahku-prod',
+      '--image=asia-southeast2-docker.pkg.dev/capstone-project-arahku/capstone/capstone_api_prod$SHORT_SHA:latest',
+      '--allow-unauthenticated',
+      '--port=5000',
+      '--service-account=864735063861-compute@developer.gserviceaccount.com',
+      '--min-instances=1',
+      '--max-instances=3',
+      '--vpc-connector=projects/capstone-project-arahku/locations/asia-southeast2/connectors/stagig',
+      '--region=asia-southeast2',
+      '--project=capstone-project-arahku'
+    ]

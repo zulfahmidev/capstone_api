@@ -13,7 +13,7 @@ class Form(db.Model) :
   created_at = db.Column(db.DateTime, nullable=False)
   
   def __init__(self, title: str, description: str) :
-    self.title = title
+    self.title = title.lower().strip()
     self.description = description
     self.created_at = datetime.now()
     self.save()
@@ -22,9 +22,10 @@ class Form(db.Model) :
     db.session.delete(self)
     db.session.commit()
   
-  def update(self, title: str, description: str) :
-    self.title = title
-    self.description = description
+  def update(self, fields: dict = {}) :
+    for field in fields :
+        if fields[field] :
+          setattr(self, field, fields[field])
     self.save()
 
   def save(self) :

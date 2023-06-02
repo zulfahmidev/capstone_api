@@ -14,7 +14,7 @@ class Field(db.Model) :
   
   def __init__(self, form_id: int, label: str) :
     self.form_id = form_id
-    self.label = label
+    self.label = label.lower().strip()
     self.created_at = datetime.now()
     self.save()
       
@@ -22,9 +22,10 @@ class Field(db.Model) :
     db.session.delete(self)
     db.session.commit()
   
-  def update(self, form_id: int, label: str) :
-    self.form_id = form_id
-    self.label = label
+  def update(self, fields: dict = {}) :
+    for field in fields :
+      if fields[field] :
+        setattr(self, field, fields[field])
     self.save()
 
   def save(self) :
