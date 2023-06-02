@@ -20,6 +20,12 @@ class ResetPassword(db.Model) :
       db.session.delete(self)
       db.session.commit()
 
+    def update(self, fields: dict = {}) :
+      for field in fields :
+        if fields[field] :
+          setattr(self, field, fields[field])
+      self.save()
+        
     def save(self) :
       db.session.add(self)
       db.session.commit()

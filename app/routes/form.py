@@ -54,7 +54,7 @@ def store() :
     ), 400
   
   form = Form(
-    title=request.json.get('title').lower(),
+    title=request.json.get('title'),
     description=request.json.get('description'),
   )
   return jsonify(
@@ -67,8 +67,8 @@ def store() :
 @form_route.route('/<id>', methods=['PUT'])
 def update(id) :
   val = Validator(request, {
-    'title': ['required', 'string'],
-    'description': ['required', 'string'],
+    'title': ['string'],
+    'description': ['string'],
   })
   
   if not val.validate() :
@@ -81,10 +81,10 @@ def update(id) :
   form = Form.query.get(id)
   
   if form :
-    form.update(
-      title=request.json.get('title').lower(),
-      description=request.json.get('description'),
-    )
+    form.update({
+      'title':request.json.get('title').lower().strip() if request.json.get('title') else None,
+      'description':request.json.get('description'),
+    })
     
     return jsonify(
       status=True,
@@ -149,7 +149,7 @@ def storeField() :
   
   field = Field(
     form_id=request.json.get('form_id'), 
-    label=request.json.get('label').strip()
+    label=request.json.get('label')
   )
   
   return jsonify(
@@ -159,7 +159,7 @@ def storeField() :
   ), 200
 
 # Update Field
-@form_route.route('/field/<id>', methods=['POST'])
+@form_route.route('/field/<id>', methods=['PUT'])
 def updateField(id) :
   val = Validator(request, {
     'label': ['required', 'string']
@@ -173,9 +173,12 @@ def updateField(id) :
   
   field = Field.query.get(id)
   if field :
+    field.update({
+      'label': request.json.get('label').lower().strip() if request.json.get('label') else None
+    })
     return jsonify(
       status=True,
-      message='Data loaded successfully.',
+      message='Field successfully updated.',
       data=field.asDict()
     ), 200
   return jsonify(
@@ -184,11 +187,62 @@ def updateField(id) :
   ), 404
 
 # Delete Field
+@form_route.route('/field/<id>', methods=['DELETE'])
+def destroyField(id) :
+  
+  field = Field.query.get(id)
+  if field :
+    field.destroy()
+    return jsonify(
+      status=True,
+      message='Field successfully destroyed.',
+      data=field.asDict()
+    ), 200
+  return jsonify(
+    status=False,
+    message='Field not found.',
+  ), 404
 
 
 # Get Option
-
+@form_route.route('/field/option/<id>', methods=['GET'])
+def getOption(id) :
+  option = Option.query.get(id)
+  if option :
+    return jsonify(
+      status=True,
+      message='Data loaded successfully.',
+      data=option.asDict()
+    ), 200
+  return jsonify(
+    status=False,
+    message='Option not found.',
+  ), 404
+  
 # Create Option
+@form_route.route('/field/option', methods=['POST'])
+def storeOption() :
+  val = Validator(request, {
+    'value': ['required', 'string'],
+    'field_id': ['required', 'integer', 'exists: fields, id']
+  })
+  if not val.validate():
+    return jsonify(
+      status=False,
+      message='Invalid field.',
+      errors= val.getErrors()
+    ), 400
+  
+  option = Option(
+    field_id=request.json.get('field_id'), 
+    value=request.json.get('value')
+  )
+  
+  return jsonify(
+    status=True,
+    message='Option successfully created.',
+    data=option.asDict()
+  ), 200
 
 # Update Option
 

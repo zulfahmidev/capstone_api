@@ -70,6 +70,10 @@ class Validator :
             res = exists(value, args[0], args[1])
             if (res is not True) :
               self.errors.append(f'The selected {k} is invalid.')
+        elif key == 'lower' :
+          if value is not None :
+            if not isinstance(value, str):
+              self.errors.append(f'The {k} is not a string.')
         else:
           self.errors.append(f'The \'{key}\' field does not exists.')
         

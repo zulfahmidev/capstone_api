@@ -25,9 +25,10 @@ class Response(db.Model) :
     db.session.delete(self)
     db.session.commit()
   
-  def update(self, user_id: int, option_id: int) :
-    self.user_id = user_id
-    self.option_id = option_id
+  def update(self, fields: dict = {}) :
+    for field in fields :
+      if fields[field] :
+        setattr(self, field, fields[field])
     self.save()
 
   def save(self) :

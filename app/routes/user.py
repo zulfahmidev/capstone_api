@@ -42,14 +42,13 @@ def update(id) :
             if user.picture is not None :
                 Storage.deleteFile(user.picture)
             file = Storage.uploadFile(request.json.get('picture'), 'uploads')
-            user.picture = file.name
-            keys = [
-                'name', 'birth_date', 'phone', 'address'
-            ]
-            for k in keys :
-                if request.json.get(k) is not None :
-                    setattr(user, k, request.json.get(k))
-            user.save()
+            user.update({
+                'picture': file.name,
+                'name': request.json.get('name').lower().strip() if request.json.get('name') else None,
+                'birth_date': request.json.get('birth_date'),
+                'phone': request.json.get('phone'), 
+                'address': request.json.get('address')   
+            })
             return jsonify(
                 status=True,
                 message='Data succesfully updated.'
