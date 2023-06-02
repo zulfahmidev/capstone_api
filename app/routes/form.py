@@ -245,10 +245,91 @@ def storeOption() :
   ), 200
 
 # Update Option
+@form_route.route('/field/option/<id>', methods=['PUT'])
+def updateOption(id) :
+  val = Validator(request, {
+    'value': ['required', 'string']
+  })
+  if not val.validate():
+    return jsonify(
+      status=False,
+      message='Invalid field.',
+      errors= val.getErrors()
+    ), 400
+  
+  option = Option.query.get(id)
+  if option :
+    option.update({
+      'value': request.json.get('value').lower().strip() if request.json.get('value') else None
+    })
+    return jsonify(
+      status=True,
+      message='Option successfully updated.',
+      data=option.asDict()
+    ), 200
+  return jsonify(
+    status=False,
+    message='Option not found.',
+  ), 404
 
 # Delete Option
+@form_route.route('/field/option/<id>', methods=['DELETE'])
+def destroyOption(id) :
 
+  option = Option.query.get(id)
+  if option :
+    option.destroy()
+    return jsonify(
+      status=True,
+      message='Option successfully destroyed.',
+      data=option.asDict()
+    ), 200
+  return jsonify(
+    status=False,
+    message='Option not found.',
+  ), 404
 
 # Get Response
+@form_route.route('/response/<form_id>', methods=['GET'])
+def getResponse(form_id) :
+  val = Validator(request, {
+    'user_id': ['integer', 'exists:users,id']
+  })
+  res = Response.query.filter_by(form_id=form_id)
+  if request.json.get('user_id') :
+    res = res.filter_by(user_id=request.json.get('user_id'))
+  responses = [v.asDict() for v in res.all()]
+  return jsonify(
+    status=True,
+    message='Data loaded successfully.',
+    data=responses
+  ), 200
 
 # Create Response
+@form_route.route('/response', methods=['POST'])
+def storeResponse() :
+  val = Validator(request, {
+    'user_id': ['required', 'integer', 'exists: users, id'],
+    'form_id': ['required', 'integer', 'exists: forms, id'],
+    'field_id': ['required', 'integer', 'exists: fields, id'],
+    'option_id': ['required', 'integer', 'exists: options, id']
+  })
+  if not val.validate():
+    return jsonify(
+      status=False,
+      message='Invalid field.',
+      errors= val.getErrors()
+    ), 400
+  
+  response = Response(
+    user_id=request.json.get('user_id'), 
+    form_id=request.json.get('form_id'), 
+    field_id=request.json.get('field_id'), 
+    option_id=request.json.get('option_id')
+  )
+  
+  return jsonify(
+    status=True,
+    message='Option successfully created.',
+    data=response.asDict()
+  ), 200
