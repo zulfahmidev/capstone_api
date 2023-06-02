@@ -1,4 +1,4 @@
-# Documentation Rest API - Arahku
+# Documentation Rest API - Arahku  
 
 ## List of Contents
 - Authentication
@@ -8,7 +8,7 @@
   - [Forgot Password](#forgot-password)
   - [Reset Password](#reset-password)
 
-- User Account
+- User Account 
   - [Show User Account](#show-user-account)
   - [Edit User Account](#edit-user-account)
 
@@ -88,6 +88,10 @@ Content-Type:application/json
 ```
 GET <BASE_URL>/auth/me
 ```
+### isi token
+```
+masukan token <barier token : "token">
+```
 ### Reponse
 ```
 {
@@ -139,6 +143,10 @@ POST <BASE_URL>/auth/reset-password/<token>
 ### Headers
 ```
 Content-Type:application/json
+```
+### isi token
+```
+masukan token <barier token : "token">
 ```
 ### Request
 ```
