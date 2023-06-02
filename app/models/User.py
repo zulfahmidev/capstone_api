@@ -21,7 +21,7 @@ class User(db.Model) :
 
     def __init__(self, name, email, password, birth_date, phone=None, address=None) :
 
-        y, m, d = birth_date.strip().split('-')
+        d, m, y = birth_date.strip().split('-')
 
         self.name = name.strip().lower()
         self.email = email.strip().lower()
