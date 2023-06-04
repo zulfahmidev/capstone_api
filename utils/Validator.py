@@ -70,6 +70,11 @@ class Validator :
             res = exists(value, args[0], args[1])
             if (res is not True) :
               self.errors.append(f'The selected {k} is invalid.')
+        elif key == 'unique' :
+          if value is not None :
+            res = unique(value, args[0], args[1])
+            if (res is not True) :
+              self.errors.append(f'The {k} has already been taken.')
         elif key == 'lower' :
           if value is not None :
             if not isinstance(value, str):
@@ -124,3 +129,25 @@ def exists(val: str, tbl: str, fld: str) :
   if rec is None :
     return False
   return True
+
+def unique(val: str, tbl: str, fld: str) :
+  models = {}
+  
+  for model in db.Model.__subclasses__():
+    if isinstance(model, type) and issubclass(model, db.Model):
+      models[model.__tablename__] = model
+  
+  metadata = db.metadata
+  if tbl not in metadata.tables.keys() :
+    return False
+  
+  print(metadata.tables[tbl].columns.keys())  
+  if fld not in metadata.tables[tbl].columns.keys() :
+    return False
+  
+  rec = db.session.query(models[tbl])\
+    .filter(getattr(models[tbl], fld) == val)\
+    .first()
+  if rec is None :
+    return True
+  return False
