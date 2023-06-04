@@ -24,6 +24,29 @@
   - [Edit Major](#edit-major)
   - [Delete Major](#delete-major)
 
+- Form
+  - [Show All Form](#show-all-form)
+  - [Show Form](#show-form)
+  - [Create Form](#create-form)
+  - [Edit Form](#edit-form)
+  - [Delete form](#delete-form)
+
+- Field
+  - [Show Field](#show-field)
+  - [Create Field](#create-field)
+  - [Edit Field](#edit-field)
+  - [Delete Field](#delete-field)
+
+- Option
+  - [Show Option](#show-option)
+  - [Create Option](#create-option)
+  - [Edit Option](#edit-option)
+  - [Delete Option](#delete-option)
+
+- Response
+  - [Show All Response](#show-all-response)
+  - [Create Response](#create-response)
+
 ## Register Account
 
 ### Endpoint
@@ -665,7 +688,7 @@ GET <BASE_URL>/form/field/option/<id>
 }
 ```
 
-## Create Field
+## Create Option
 ### Endpoint
 ```
 POST <BASE_URL>/form/field/option
@@ -694,10 +717,10 @@ Content-Type:application/json
 }
 ```
 
-## Edit Form
+## Edit Option
 ### Endpoint
 ```
-PUT <BASE_URL>/form/field/<id>
+PUT <BASE_URL>/form/field/option/<id>
 ```
 ### Headers
 ```
@@ -723,10 +746,10 @@ Content-Type:application/json
 }
 ```
 
-## Delete Form
+## Delete Option
 ### Endpoint
 ```
-DELETE <BASE_URL>/form/field/<id>
+DELETE <BASE_URL>/form/field/option/<id>
 ```
 ### Response
 ```
