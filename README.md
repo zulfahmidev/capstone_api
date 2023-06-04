@@ -24,6 +24,29 @@
   - [Edit Major](#edit-major)
   - [Delete Major](#delete-major)
 
+- Form
+  - [Show All Form](#show-all-form)
+  - [Show Form](#show-form)
+  - [Create Form](#create-form)
+  - [Edit Form](#edit-form)
+  - [Delete form](#delete-form)
+
+- Field
+  - [Show Field](#show-field)
+  - [Create Field](#create-field)
+  - [Edit Field](#edit-field)
+  - [Delete Field](#delete-field)
+
+- Option
+  - [Show Option](#show-option)
+  - [Create Option](#create-option)
+  - [Edit Option](#edit-option)
+  - [Delete Option](#delete-option)
+
+- Response
+  - [Show All Response](#show-all-response)
+  - [Create Response](#create-response)
+
 ## Register Account
 
 ### Endpoint
@@ -422,6 +445,410 @@ DELETE <BASE_URL>/major/category/<id>
         "name": "major_name**"
     },
     "message": "Major successfully destroyed.",
+    "status": true
+}
+```
+
+## Show All Form
+### Endpoint
+```
+GET <BASE_URL>/form/
+```
+### Response
+```
+{
+    "data": [
+        {
+            "description": "**description",
+            "id": **form_id,
+            "title": "**title"
+        },
+    ],
+    "message": "Data loaded successfully.",
+    "status": true
+}
+```
+
+## Show Form
+### Endpoint
+```
+GET <BASE_URL>/form/<id>
+```
+### Response
+```
+{
+    "data": {
+        "description": "**description",
+        "fields": [
+            {
+                "form_id": **form_id,
+                "id": **field_id,
+                "label": "**label_or_question",
+                "options": [
+                    {
+                        "field_id": **field_id,
+                        "id": **option_id,
+                        "value": "**value_or_answer"
+                    }
+                ]
+            }
+        ],
+        "id": **form_id,
+        "title": "**title"
+    },
+    "message": "Data loaded successfully.",
+    "status": true
+}
+```
+
+## Create Form
+### Endpoint
+```
+POST <BASE_URL>/form/
+```
+### Headers
+```
+Content-Type:application/json
+```
+### Request
+```
+{
+    "title": "<TITLE>",
+    "description": "<DESCRIPTION>"
+}
+```
+### Response
+```
+{
+    "data": {
+        "description": "**description",
+        "fields": [],
+        "id": **form_id,
+        "title": "**title"
+    },
+    "message": "Form successfully created.",
+    "status": true
+}
+```
+
+## Edit Form
+### Endpoint
+```
+PUT <BASE_URL>/form/<id>
+```
+### Headers
+```
+Content-Type:application/json
+```
+### Request
+```
+{
+    "title": "<TITLE>",
+    "description": "<DESCRIPTION>"
+}
+```
+### Response
+```
+{
+    "data": {
+        "description": "**description",
+        "fields": [],
+        "id": **form_id,
+        "title": "**title"
+    },
+    "message": "Form successfully updated.",
+    "status": true
+}
+```
+
+## Delete Form
+### Endpoint
+```
+DELETE <BASE_URL>/form/
+```
+### Response
+```
+{
+    "data": {
+        "description": "**description",
+        "fields": [],
+        "id": **form_id,
+        "title": "**title"
+    },
+    "message": "Form successfully deleted.",
+    "status": true
+}
+```
+
+## Show Field
+### Endpoint
+```
+GET <BASE_URL>/form/field/<id>
+```
+### Response
+```
+{
+    "data": {
+        "form_id": **form_id,
+        "id": **field_id,
+        "label": "**field_or_question",
+        "options": []
+    },
+    "message": "Data loaded successfully.",
+    "status": true
+}
+```
+
+## Create Field
+### Endpoint
+```
+POST <BASE_URL>/form/field
+```
+### Headers
+```
+Content-Type:application/json
+```
+### Request
+```
+{
+    "label": "<LABEL>",
+    "form_id": <FORM_ID>
+}
+```
+### Response
+```
+{
+    "data": {
+        "form_id": **form_id,
+        "id": **field_id,
+        "label": "**field_or_question",
+        "options": []
+    },
+    "message": "Field successfully created.",
+    "status": true
+}
+```
+
+## Edit Field
+### Endpoint
+```
+PUT <BASE_URL>/form/field/<id>
+```
+### Headers
+```
+Content-Type:application/json
+```
+### Request
+```
+{
+    "label": "<LABEL>",
+    "form_id": <FORM_ID>
+}
+```
+### Response
+```
+{
+    "data": {
+        "form_id": **form_id,
+        "id": **field_id,
+        "label": "**field_or_question",
+        "options": []
+    },
+    "message": "Field successfully updated.",
+    "status": true
+}
+```
+
+## Delete Field
+### Endpoint
+```
+DELETE <BASE_URL>/form/field/<id>
+```
+### Response
+```
+{
+    "data": {
+        "form_id": **form_id,
+        "id": **field_id,
+        "label": "**field_or_question",
+        "options": []
+    },
+    "message": "Field successfully destroyed.",
+    "status": true
+}
+```
+
+## Show Option
+### Endpoint
+```
+GET <BASE_URL>/form/field/option/<id>
+```
+### Response
+```
+{
+    "data": {
+        "field_id": **field_id,
+        "id": **option_id,
+        "value": "**value_or_answer"
+    },
+    "message": "Data loaded successfully.",
+    "status": true
+}
+```
+
+## Create Option
+### Endpoint
+```
+POST <BASE_URL>/form/field/option
+```
+### Headers
+```
+Content-Type:application/json
+```
+### Request
+```
+{
+    "value": "<value>",
+    "field_id": <field_id>
+}
+```
+### Response
+```
+{
+    "data": {
+        "field_id": **field_id,
+        "id": **option_id,
+        "value": "**value_or_answer"
+    },
+    "message": "Option successfully created.",
+    "status": true
+}
+```
+
+## Edit Option
+### Endpoint
+```
+PUT <BASE_URL>/form/field/option/<id>
+```
+### Headers
+```
+Content-Type:application/json
+```
+### Request
+```
+{
+    "value": "<value>",
+    "field_id": <field_id>
+}
+```
+### Response
+```
+{
+    "data": {
+        "field_id": **field_id,
+        "id": **option_id,
+        "value": "**value_or_answer"
+    },
+    "message": "Option successfully updated.",
+    "status": true
+}
+```
+
+## Delete Option
+### Endpoint
+```
+DELETE <BASE_URL>/form/field/option/<id>
+```
+### Response
+```
+{
+    "data": {
+        "field_id": **field_id,
+        "id": **option_id,
+        "value": "**value_or_answer"
+    },
+    "message": "Option successfully destroyed.",
+    "status": true
+}
+```
+
+## Show All Response
+### Endpoint
+```
+GET <BASE_URL>/form/response
+```
+### Response
+```
+{
+    "data": [
+        {
+            "id": **response_id,
+            "user_id": {
+                "id": **user_id,
+                "name": "**user_name"
+            },
+            "form_id": {
+                "id": **form_id,
+                "title": "**form_title"
+            },
+            "field_id": {
+                "id": **field_id,
+                "label": "**field_label"
+            },
+            "option_id": {
+                "id": **option_id,
+                "value": "**option_value"
+            },
+            "created_at": "Sun, 28 May 2023 22:51:06 GMT",
+        }
+    ],
+    "message": "Data loaded successfully.",
+    "status": true
+}
+```
+
+## Create Response
+### Endpoint
+```
+POST <BASE_URL>/form/response
+```
+### Headers
+```
+Content-Type:application/json
+```
+### Request
+```
+{
+    "user_id": <user_id>,
+    "form_id": <form_id>,
+    "field_id": <field_id>,
+    "option_id": <option_id>
+}
+```
+### Response
+```
+{
+    "data": {
+        "id": **response_id,
+        "user_id": {
+            "id": **user_id,
+            "name": "**user_name"
+        },
+        "form_id": {
+            "id": **form_id,
+            "title": "**form_title"
+        },
+        "field_id": {
+            "id": **field_id,
+            "label": "**field_label"
+        },
+        "option_id": {
+            "id": **option_id,
+            "value": "**option_value"
+        },
+        "created_at": "Sun, 28 May 2023 22:51:06 GMT",
+    },
+    "message": "Response successfully created.",
     "status": true
 }
 ```

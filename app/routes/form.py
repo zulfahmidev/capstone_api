@@ -42,7 +42,7 @@ def get(id) :
 @form_route.route('/', methods=['POST'])
 def store() :
   val = Validator(request, {
-    'title': ['required', 'string'],
+    'title': ['required', 'string', 'unique:forms,title'],
     'description': ['required', 'string'],
   })
   
@@ -330,6 +330,6 @@ def storeResponse() :
   
   return jsonify(
     status=True,
-    message='Option successfully created.',
+    message='Response successfully created.',
     data=response.asDict()
   ), 200

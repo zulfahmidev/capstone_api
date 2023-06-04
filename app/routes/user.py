@@ -6,6 +6,7 @@ from app.models.User import User
 from utils import Auth
 from utils.Validator import Validator
 from utils import Storage
+from datetime import datetime
 
 user_route = Blueprint('user', __name__)
 
@@ -42,10 +43,12 @@ def update(id) :
             if user.picture is not None :
                 Storage.deleteFile(user.picture)
             file = Storage.uploadFile(request.json.get('picture'), 'uploads')
+            if (request.json.get('birth_date').split('-')) :
+                d, m, y = request.json.get('birth_date').split('-');
             user.update({
                 'picture': file.name,
                 'name': request.json.get('name').lower().strip() if request.json.get('name') else None,
-                'birth_date': request.json.get('birth_date'),
+                'birth_date': datetime(int(y), int(m), int(d)) if request.json.get('birth_date') else user.birth_date,
                 'phone': request.json.get('phone'), 
                 'address': request.json.get('address')   
             })
