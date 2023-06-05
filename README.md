@@ -4,7 +4,7 @@
 - Authentication
   - [Register Account](#register-account)
   - [Login Account](#login-account)
-  - [Get Logged In Account Data](#get-logged-in-account-data)
+  - [Get Logged In Account Data](#get-logged-in-account-data) 
   - [Forgot Password](#forgot-password)
   - [Reset Password](#reset-password)
 
