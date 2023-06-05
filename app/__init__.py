@@ -32,4 +32,3 @@ with app.app_context():
   app.register_blueprint(user_route, url_prefix='/user')
   app.register_blueprint(major_route, url_prefix='/major')
   app.register_blueprint(form_route, url_prefix='/form')
-  Tests.init()

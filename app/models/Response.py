@@ -3,8 +3,7 @@ from datetime import datetime
 
 from app.models.User import User
 from app.models.Form import Form
-from app.models.Field import Field
-from app.models.Option import Option
+from app.models.ResponseAnswer import ResponseAnswer
 
 class Response(db.Model) :
   
@@ -13,16 +12,17 @@ class Response(db.Model) :
   id = db.Column(db.Integer, primary_key=True)
   user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'))
   form_id = db.Column(db.Integer, db.ForeignKey('forms.id', ondelete='CASCADE'))
-  field_id = db.Column(db.Integer, db.ForeignKey('fields.id', ondelete='CASCADE'))
-  option_id = db.Column(db.Integer, db.ForeignKey('options.id', ondelete='CASCADE'))
+  result = db.Column(db.String(255),  nullable=True)
   created_at = db.Column(db.DateTime, nullable=False)
   
-  def __init__(self, user_id: int, form_id: int, field_id: int, option_id: int) :
+  def __init__(self, user_id: int, form_id: int) :
     self.user_id = user_id
     self.form_id = form_id
-    self.field_id = field_id
-    self.option_id = option_id
     self.created_at = datetime.now()
+    self.save()
+  
+  def setResult(self, result: str) :
+    self.result = result
     self.save()
       
   def destroy(self) :
@@ -41,9 +41,8 @@ class Response(db.Model) :
   
   def asDict(self) :
     user = User.query.get(self.user_id)
-    option = Option.query.get(self.option_id)
-    field = Field.query.get(self.field_id)
     form = Form.query.get(self.form_id)
+    responses = [v.asDict() for v in ResponseAnswer.query.filter_by(response_id=self.id).all()]
     return {
       "id": self.id,
       "user_id": {
@@ -54,14 +53,8 @@ class Response(db.Model) :
         "id": form.id,
         "title": form.title
       },
-      "field_id": {
-        "id": field.id,
-        "label": field.label
-      },
-      "option_id": {
-        "id": option.id,
-        "value": option.value
-      },
+      "responses": responses,
+      "result": self.result,
       "created_at": self.created_at
     }
   
