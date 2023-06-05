@@ -1,20 +1,23 @@
 from extensions import db
 from datetime import datetime
 
+from app.models.User import User
+from app.models.Form import Form
+from app.models.Field import Field
 from app.models.Option import Option
 
-class Field(db.Model) :
+class ResponseAnswer(db.Model) :
   
-  __tablename__ = 'fields'
+  __tablename__ = 'response_answers'
   
   id = db.Column(db.Integer, primary_key=True)
-  form_id = db.Column(db.Integer, db.ForeignKey('forms.id', ondelete='CASCADE'))
-  label = db.Column(db.String(255), nullable=False)
+  response_id = db.Column(db.Integer, db.ForeignKey('responses.id', ondelete='CASCADE'))
+  option_id = db.Column(db.Integer, db.ForeignKey('options.id', ondelete='CASCADE'))
   created_at = db.Column(db.DateTime, nullable=False)
   
-  def __init__(self, form_id: int, label: str) :
-    self.form_id = form_id
-    self.label = label.lower().strip()
+  def __init__(self, response_id: int, option_id: int) :
+    self.response_id = response_id
+    self.option_id = option_id
     self.created_at = datetime.now()
     self.save()
       
@@ -33,11 +36,12 @@ class Field(db.Model) :
     db.session.commit()
   
   def asDict(self) :
-    options = [v.asDict() for v in Option.query.filter_by(field_id=self.id).all()]
     return {
       "id": self.id,
-      "label": self.label,
-      # "form_id": self.form_id,
-      "options": options
+      "response_id": self.response_id,
+      "option_id": self.option_id,
+      "created_at": self.created_at
     }
+  
+    
   

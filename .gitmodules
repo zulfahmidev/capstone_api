@@ -1,0 +1,4 @@
+[submodule "ml"]
+	path = ml
+	url = https://github.com/zulfahmidev/capstone_ml.git
+	branch = master

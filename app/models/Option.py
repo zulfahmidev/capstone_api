@@ -34,6 +34,6 @@ class Option(db.Model) :
     return {
       "id": self.id,
       "value": self.value,
-      "field_id": self.field_id
+      # "field_id": self.field_id
     }
   

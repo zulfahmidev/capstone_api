@@ -27,10 +27,13 @@ class Validator :
         args = []
         if len(rule) > 1 :
           args = rule[1].replace(' ', '').split(',')
-          
+        
         if key == 'required' :
           if k not in self.files and value is None :
             self.errors.append(f'The {k} field is required.')
+        elif key == 'unchanged' :
+          if k not in self.files and value is not None :
+            self.errors.append(f'The {k} field cannot be changed.')
         elif key == 'integer' :
           if value is not None :
             if not isinstance(value, int):
@@ -79,10 +82,12 @@ class Validator :
           if value is not None :
             if not isinstance(value, str):
               self.errors.append(f'The {k} is not a string.')
+        elif key == 'array' :
+          if value is not None :
+            if not isinstance(value, list):
+              self.errors.append(f'The {k} is not an array.')
         else:
           self.errors.append(f'The \'{key}\' field does not exists.')
-        
-          
     return len(self.errors) == 0
 
 def allowed_file(filename, exts = []) :
@@ -141,7 +146,6 @@ def unique(val: str, tbl: str, fld: str) :
   if tbl not in metadata.tables.keys() :
     return False
   
-  print(metadata.tables[tbl].columns.keys())  
   if fld not in metadata.tables[tbl].columns.keys() :
     return False
   

@@ -4,51 +4,27 @@
 - Authentication
   - [Register Account](#register-account)
   - [Login Account](#login-account)
-  - [Show Logged In Account Data](#show-logged-in-account-data)
+  - [Get Logged In Account Data](#get-logged-in-account-data)
   - [Forgot Password](#forgot-password)
   - [Reset Password](#reset-password)
 
-- User Account 
-  - [Show User Account](#show-user-account)
+- User Account
+  - [Get User Account](#get-user-account)
   - [Edit User Account](#edit-user-account)
 
-- Major Category
-  - [Show Major Category](#show-major-category)
-  - [Add Major Category](#add-major-category)
-  - [Edit Major Category](#edit-major-category)
-  - [Delete Major Category](#delete-major-category)
-
 - Major
-  - [Show Major](#show-major)
-  - [Add Major](#add-major)
-  - [Edit Major](#edit-major)
-  - [Delete Major](#delete-major)
+  - [Get Majors](#get-majors)
+  - [Get Major By Id](#get-major-by-id)
 
 - Form
-  - [Show All Form](#show-all-form)
-  - [Show Form](#show-form)
-  - [Create Form](#create-form)
-  - [Edit Form](#edit-form)
-  - [Delete form](#delete-form)
-
-- Field
-  - [Show Field](#show-field)
-  - [Create Field](#create-field)
-  - [Edit Field](#edit-field)
-  - [Delete Field](#delete-field)
-
-- Option
-  - [Show Option](#show-option)
-  - [Create Option](#create-option)
-  - [Edit Option](#edit-option)
-  - [Delete Option](#delete-option)
+  - [Get Forms](#get-all-forms)
+  - [Get Form By Slug](#get-form-by-slug)
 
 - Response
-  - [Show All Response](#show-all-response)
-  - [Create Response](#create-response)
+  - [Get Responses](#get-all-responses)
+  - [Send Response](#send-response)
 
 ## Register Account
-
 ### Endpoint
 ```
 POST <BASE_URL>/auth/register
@@ -236,112 +212,26 @@ Content-Type:application/json
 }
 ```
 
-## Show Major Category
-### Endpoint
-```
-GET <BASE_URL>/major/category
-```
-### Response
-```
-{
-    "data": [
-        {
-            "created_at": "Mon, 29 May 2023 09:22:02 GMT",
-            "id": major_category_id**,
-            "name": "category_name**"
-        }
-    ],
-    "message": "Data loaded successfully.",
-    "status": true
-}
-```
-
-## Add Major Category
-### Endpoint
-```
-POST <BASE_URL>/major/category
-```
-### Headers
-```
-Content-Type:application/json
-```
-### Request
-```
-{
-    "name": "<CATEGORY NAME>"
-}
-```
-### Response
-```
-{
-    "data": {
-        "created_at": "Mon, 29 May 2023 09:22:02 GMT",
-        "id": major_category_id**,
-        "name": "category_name**"
-    },
-    "message": "Category successfully created.",
-    "status": true
-}
-```
-
-## Edit Major Category
-### Endpoint
-```
-PUT <BASE_URL>/major/category/<id>
-```
-### Headers
-```
-Content-Type:application/json
-```
-### Request
-```
-{
-    "name": "<CATEGORY NAME>"
-}
-```
-### Response
-```
-{
-    "message": "Category successfully updated.",
-    "status": true
-}
-```
-
-## Delete Major Category
-### Endpoint
-```
-DELETE <BASE_URL>/major/category/<id>
-```
-### Response
-```
-{
-    "data": [
-        {
-            "created_at": "Mon, 29 May 2023 09:22:02 GMT",
-            "id": major_category_id**,
-            "name": "category_name**"
-        }
-    ],
-    "message": "Category successfully destroyed.",
-    "status": true
-}
-```
-
-## Show Major
+## Get Majors
 ### Endpoint
 ```
 GET <BASE_URL>/major
 ```
+### Headers
+```
+Content-Type:application/json
+```
+### Request <Optional>
+```
+{
+    "search": "<search_key>",
+}
+```
 ### Response
 ```
 {
     "data": [
         {
-            "category": {
-                "created_at": "Mon, 29 May 2023 09:22:02 GMT",
-                "id": major_category_id**,
-                "name": "category_name**"
-            },
             "created_at": "Mon, 29 May 2023 12:14:14 GMT",
             "description": "description**",
             "id": major_id**,
@@ -353,103 +243,30 @@ GET <BASE_URL>/major
 }
 ```
 
-## Add Major
+## Get Major By Id
 ### Endpoint
 ```
-POST <BASE_URL>/major
+GET <BASE_URL>/major/<id>
 ```
 ### Headers
 ```
 Content-Type:application/json
 ```
-### Request
-```
-{
-    "name": "<NAME>",
-    "description": "<DESCRIPTION>",
-    "id_category": "<MAJOR CATEGORY ID>"
-}
-```
 ### Response
 ```
 {
     "data": {
-        "category": {
-            "created_at": "Mon, 29 May 2023 09:22:02 GMT",
-            "id": major_category_id**,
-            "name": "category_name**"
-        },
         "created_at": "Mon, 29 May 2023 12:14:14 GMT",
         "description": "description**",
         "id": major_id**,
         "name": "major_name**"
     },
-    "message": "Major successfully created.",
+    "message": "Data loaded successfully.",
     "status": true
 }
 ```
 
-## Edit Major
-### Endpoint
-```
-PUT <BASE_URL>/major/<id>
-```
-### Headers
-```
-Content-Type:application/json
-```
-### Request
-```
-{
-    "name": "<NAME>",
-    "description": "<DESCRIPTION>",
-    "id_category": "<MAJOR CATEGORY ID>"
-}
-```
-### Response
-```
-{
-    "data": {
-        "category": {
-            "created_at": "Mon, 29 May 2023 09:22:02 GMT",
-            "id": major_category_id**,
-            "name": "category_name**"
-        },
-        "created_at": "Mon, 29 May 2023 12:14:14 GMT",
-        "description": "description**",
-        "id": major_id**,
-        "name": "major_name**"
-    },
-    "message": "Major successfully updated.",
-    "status": true
-}
-```
-
-## Delete Major
-### Endpoint
-```
-DELETE <BASE_URL>/major/category/<id>
-```
-### Response
-```
-{
-    "data": {
-        "category": {
-            "created_at": "Mon, 29 May 2023 09:22:02 GMT",
-            "id": major_category_id**,
-            "name": "category_name**"
-        },
-        "created_at": "Mon, 29 May 2023 12:14:14 GMT",
-        "description": "description**",
-        "id": major_id**,
-        "name": "major_name**"
-    },
-    "message": "Major successfully destroyed.",
-    "status": true
-}
-```
-
-## Show All Form
+## Get Forms
 ### Endpoint
 ```
 GET <BASE_URL>/form/
@@ -461,6 +278,7 @@ GET <BASE_URL>/form/
         {
             "description": "**description",
             "id": **form_id,
+            "slug": **form_slug,
             "title": "**title"
         },
     ],
@@ -469,337 +287,73 @@ GET <BASE_URL>/form/
 }
 ```
 
-## Show Form
+## Get Form By Slug
 ### Endpoint
 ```
-GET <BASE_URL>/form/<id>
+GET <BASE_URL>/form/<slug>
 ```
 ### Response
 ```
 {
     "data": {
+        "created_at": "Mon, 05 Jun 2023 10:00:53 GMT",
         "description": "**description",
+        "id": **form_id,
+        "slug": "**form_slug",
+        "title": "**title",
         "fields": [
             {
-                "form_id": **form_id,
                 "id": **field_id,
                 "label": "**label_or_question",
                 "options": [
                     {
-                        "field_id": **field_id,
                         "id": **option_id,
-                        "value": "**value_or_answer"
-                    }
+                        "value": "**value"
+                    },
+
+                    ...
                 ]
-            }
-        ],
-        "id": **form_id,
-        "title": "**title"
+
+                ...
+            },
+        ]
     },
     "message": "Data loaded successfully.",
     "status": true
 }
 ```
 
-## Create Form
+## Get Form Responses
 ### Endpoint
 ```
-POST <BASE_URL>/form/
-```
-### Headers
-```
-Content-Type:application/json
-```
-### Request
-```
-{
-    "title": "<TITLE>",
-    "description": "<DESCRIPTION>"
-}
-```
-### Response
-```
-{
-    "data": {
-        "description": "**description",
-        "fields": [],
-        "id": **form_id,
-        "title": "**title"
-    },
-    "message": "Form successfully created.",
-    "status": true
-}
-```
-
-## Edit Form
-### Endpoint
-```
-PUT <BASE_URL>/form/<id>
-```
-### Headers
-```
-Content-Type:application/json
-```
-### Request
-```
-{
-    "title": "<TITLE>",
-    "description": "<DESCRIPTION>"
-}
-```
-### Response
-```
-{
-    "data": {
-        "description": "**description",
-        "fields": [],
-        "id": **form_id,
-        "title": "**title"
-    },
-    "message": "Form successfully updated.",
-    "status": true
-}
-```
-
-## Delete Form
-### Endpoint
-```
-DELETE <BASE_URL>/form/
-```
-### Response
-```
-{
-    "data": {
-        "description": "**description",
-        "fields": [],
-        "id": **form_id,
-        "title": "**title"
-    },
-    "message": "Form successfully deleted.",
-    "status": true
-}
-```
-
-## Show Field
-### Endpoint
-```
-GET <BASE_URL>/form/field/<id>
-```
-### Response
-```
-{
-    "data": {
-        "form_id": **form_id,
-        "id": **field_id,
-        "label": "**field_or_question",
-        "options": []
-    },
-    "message": "Data loaded successfully.",
-    "status": true
-}
-```
-
-## Create Field
-### Endpoint
-```
-POST <BASE_URL>/form/field
-```
-### Headers
-```
-Content-Type:application/json
-```
-### Request
-```
-{
-    "label": "<LABEL>",
-    "form_id": <FORM_ID>
-}
-```
-### Response
-```
-{
-    "data": {
-        "form_id": **form_id,
-        "id": **field_id,
-        "label": "**field_or_question",
-        "options": []
-    },
-    "message": "Field successfully created.",
-    "status": true
-}
-```
-
-## Edit Field
-### Endpoint
-```
-PUT <BASE_URL>/form/field/<id>
-```
-### Headers
-```
-Content-Type:application/json
-```
-### Request
-```
-{
-    "label": "<LABEL>",
-    "form_id": <FORM_ID>
-}
-```
-### Response
-```
-{
-    "data": {
-        "form_id": **form_id,
-        "id": **field_id,
-        "label": "**field_or_question",
-        "options": []
-    },
-    "message": "Field successfully updated.",
-    "status": true
-}
-```
-
-## Delete Field
-### Endpoint
-```
-DELETE <BASE_URL>/form/field/<id>
-```
-### Response
-```
-{
-    "data": {
-        "form_id": **form_id,
-        "id": **field_id,
-        "label": "**field_or_question",
-        "options": []
-    },
-    "message": "Field successfully destroyed.",
-    "status": true
-}
-```
-
-## Show Option
-### Endpoint
-```
-GET <BASE_URL>/form/field/option/<id>
-```
-### Response
-```
-{
-    "data": {
-        "field_id": **field_id,
-        "id": **option_id,
-        "value": "**value_or_answer"
-    },
-    "message": "Data loaded successfully.",
-    "status": true
-}
-```
-
-## Create Option
-### Endpoint
-```
-POST <BASE_URL>/form/field/option
-```
-### Headers
-```
-Content-Type:application/json
-```
-### Request
-```
-{
-    "value": "<value>",
-    "field_id": <field_id>
-}
-```
-### Response
-```
-{
-    "data": {
-        "field_id": **field_id,
-        "id": **option_id,
-        "value": "**value_or_answer"
-    },
-    "message": "Option successfully created.",
-    "status": true
-}
-```
-
-## Edit Option
-### Endpoint
-```
-PUT <BASE_URL>/form/field/option/<id>
-```
-### Headers
-```
-Content-Type:application/json
-```
-### Request
-```
-{
-    "value": "<value>",
-    "field_id": <field_id>
-}
-```
-### Response
-```
-{
-    "data": {
-        "field_id": **field_id,
-        "id": **option_id,
-        "value": "**value_or_answer"
-    },
-    "message": "Option successfully updated.",
-    "status": true
-}
-```
-
-## Delete Option
-### Endpoint
-```
-DELETE <BASE_URL>/form/field/option/<id>
-```
-### Response
-```
-{
-    "data": {
-        "field_id": **field_id,
-        "id": **option_id,
-        "value": "**value_or_answer"
-    },
-    "message": "Option successfully destroyed.",
-    "status": true
-}
-```
-
-## Show All Response
-### Endpoint
-```
-GET <BASE_URL>/form/response
+GET <BASE_URL>/form/response/<form_id>
 ```
 ### Response
 ```
 {
     "data": [
         {
-            "id": **response_id,
-            "user_id": {
-                "id": **user_id,
-                "name": "**user_name"
-            },
+            "created_at": "Mon, 05 Jun 2023 10:14:10 GMT",
             "form_id": {
                 "id": **form_id,
                 "title": "**form_title"
             },
-            "field_id": {
-                "id": **field_id,
-                "label": "**field_label"
+            "id": 1,
+            "result": "**result",
+            "user_id": {
+                "id": **user_id,
+                "name": "**username"
             },
-            "option_id": {
-                "id": **option_id,
-                "value": "**option_value"
-            },
-            "created_at": "Sun, 28 May 2023 22:51:06 GMT",
+            "responses": [
+                {
+                    "created_at": "Mon, 05 Jun 2023 10:14:10 GMT",
+                    "id": 1,
+                    "option_id": 1,
+                    "response_id": 1
+                }
+
+                ...
+            ]
         }
     ],
     "message": "Data loaded successfully.",
@@ -807,7 +361,7 @@ GET <BASE_URL>/form/response
 }
 ```
 
-## Create Response
+## Send Response
 ### Endpoint
 ```
 POST <BASE_URL>/form/response
@@ -819,36 +373,45 @@ Content-Type:application/json
 ### Request
 ```
 {
-    "user_id": <user_id>,
-    "form_id": <form_id>,
-    "field_id": <field_id>,
-    "option_id": <option_id>
+    "user_id": **user_id,
+    "form_id": **form_id,
+    "responses": [
+        {
+            "field_id": **field_id,
+            "option_id": **option_id
+        },
+
+        ...
+    ]
 }
 ```
 ### Response
 ```
 {
     "data": {
-        "id": **response_id,
-        "user_id": {
-            "id": **user_id,
-            "name": "**user_name"
-        },
+        "created_at": "Mon, 05 Jun 2023 10:14:10 GMT",
         "form_id": {
             "id": **form_id,
             "title": "**form_title"
         },
-        "field_id": {
-            "id": **field_id,
-            "label": "**field_label"
+        "id": 1,
+        "result": "**result",
+        "user_id": {
+            "id": **user_id,
+            "name": "**username"
         },
-        "option_id": {
-            "id": **option_id,
-            "value": "**option_value"
-        },
-        "created_at": "Sun, 28 May 2023 22:51:06 GMT",
+        "responses": [
+            {
+                "created_at": "Mon, 05 Jun 2023 10:14:10 GMT",
+                "id": **response_answer_id,
+                "option_id": **option_id,
+                "response_id": **response_id
+            }
+
+            ...
+        ]
     },
-    "message": "Response successfully created.",
+    "message": "Response successfully sended.",
     "status": true
 }
 ```
