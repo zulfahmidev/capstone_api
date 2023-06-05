@@ -25,7 +25,6 @@
   - [Send Response](#send-response)
 
 ## Register Account
-
 ### Endpoint
 ```
 POST <BASE_URL>/auth/register
