@@ -12,19 +12,24 @@ from extensions import db, mail, jwt, mgr
 import collections
 collections.Iterable = collections.abc.Iterable
 
+from utils import Tests
+
 app = Flask(__name__)
 # app.static_folder = 'static'
 
 load_dotenv('.env')
-InitConfig(app)
 
-jwt.init_app(app)
-db.init_app(app)
-mail.init_app(app)
-mgr.init_app(app, db)
+with app.app_context():
+  InitConfig(app)
 
-app.register_blueprint(auth, url_prefix='/auth')
-app.register_blueprint(storage_route, url_prefix='/storage')
-app.register_blueprint(user_route, url_prefix='/user')
-app.register_blueprint(major_route, url_prefix='/major')
-app.register_blueprint(form_route, url_prefix='/form')
+  jwt.init_app(app)
+  db.init_app(app)
+  mail.init_app(app)
+  mgr.init_app(app, db)
+
+  app.register_blueprint(auth, url_prefix='/auth')
+  app.register_blueprint(storage_route, url_prefix='/storage')
+  app.register_blueprint(user_route, url_prefix='/user')
+  app.register_blueprint(major_route, url_prefix='/major')
+  app.register_blueprint(form_route, url_prefix='/form')
+  Tests.init()

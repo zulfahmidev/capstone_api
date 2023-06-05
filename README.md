@@ -14,34 +14,13 @@
 
 - Major Category
   - [Show Major Category](#show-major-category)
-  - [Add Major Category](#add-major-category)
-  - [Edit Major Category](#edit-major-category)
-  - [Delete Major Category](#delete-major-category)
 
 - Major
   - [Show Major](#show-major)
-  - [Add Major](#add-major)
-  - [Edit Major](#edit-major)
-  - [Delete Major](#delete-major)
 
-- Form
-  - [Show All Form](#show-all-form)
-  - [Show Form](#show-form)
-  - [Create Form](#create-form)
-  - [Edit Form](#edit-form)
-  - [Delete form](#delete-form)
-
-- Field
-  - [Show Field](#show-field)
-  - [Create Field](#create-field)
-  - [Edit Field](#edit-field)
-  - [Delete Field](#delete-field)
-
-- Option
-  - [Show Option](#show-option)
-  - [Create Option](#create-option)
-  - [Edit Option](#edit-option)
-  - [Delete Option](#delete-option)
+- Test
+  - [Show All Tests](#show-all-form)
+  - [Show Tests](#show-form)
 
 - Response
   - [Show All Response](#show-all-response)

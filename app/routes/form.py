@@ -15,6 +15,7 @@ def getAll() :
   forms = [{
     'id': v.id,
     'title': v.title,
+    'slug': v.slug,
     'description': v.description, 
   } for v in Form.query.all()]
   return jsonify(
@@ -27,6 +28,21 @@ def getAll() :
 @form_route.route('/<id>', methods=['GET'])
 def get(id) :
   form = Form.query.get(id)
+  if form :
+    return jsonify(
+      status=True,
+      message='Data loaded successfully.',
+      data=form.asDict()
+    ), 200
+  return jsonify(
+    status=False,
+    message='Form not found.',
+  ), 404
+  
+# Get One Form By Slug
+@form_route.route('/<slug>', methods=['GET'])
+def getBySlug(slug) :
+  form = Form.query.filter_by(slug=slug).first()
   if form :
     return jsonify(
       status=True,
@@ -67,7 +83,7 @@ def store() :
 @form_route.route('/<id>', methods=['PUT'])
 def update(id) :
   val = Validator(request, {
-    'title': ['string'],
+    'title': ['string', 'unchanged'],
     'description': ['string'],
   })
   

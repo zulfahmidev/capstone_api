@@ -31,6 +31,9 @@ class Validator :
         if key == 'required' :
           if k not in self.files and value is None :
             self.errors.append(f'The {k} field is required.')
+        if key == 'unchanged' :
+          if k not in self.files and value is not None :
+            self.errors.append(f'The {k} field cannot be changed.')
         elif key == 'integer' :
           if value is not None :
             if not isinstance(value, int):
@@ -141,7 +144,6 @@ def unique(val: str, tbl: str, fld: str) :
   if tbl not in metadata.tables.keys() :
     return False
   
-  print(metadata.tables[tbl].columns.keys())  
   if fld not in metadata.tables[tbl].columns.keys() :
     return False
   
