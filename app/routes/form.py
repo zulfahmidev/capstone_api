@@ -351,7 +351,7 @@ def storeResponse() :
   weights = []
   for v in res :
     option = Option.query.get(v['option_id'])
-    weights.append(option.value)
+    weights.append(option.weight)
     ResponseAnswer(
       response_id=response.id,
       option_id=v['option_id']
