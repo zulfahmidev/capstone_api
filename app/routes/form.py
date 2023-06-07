@@ -366,6 +366,15 @@ def storeResponse() :
     data=response.asDict()
   ), 200
   
-@form_route.route('/init-test', methods=['GET'])
+@form_route.route('/init/tests', methods=['GET'])
 def intiTest() : 
-  Tests.init()
+  if Tests.init() :
+    return jsonify(
+      status=True,
+      message='The tests form was successfully initiated.'
+    ), 200
+  return jsonify(
+    status=False,
+    message='Tests form failed to initialize.'
+  ), 500
+  
