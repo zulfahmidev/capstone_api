@@ -14,7 +14,6 @@ def init() :
   metadata = db.metadata
   for tbl in ['forms', 'fields', 'options', 'majors'] :
     if tbl not in metadata.tables.keys() :
-      print(tbl)
       return False
   with open(file_path, 'r') as file:
     tests = json.load(file)
@@ -31,14 +30,18 @@ def init() :
           form_id=form.id,
           label=question['question']
         )
-        for weight in question['weight'] :
+        # print(question['options'][1])
+        for opt in question['options'] :
+          # print(opt)
           option = Option(
             field_id=field.id,
-            value=weight
-          ) 
+            value=opt['value'],
+            weight=opt['weight'],
+          )  
       print('Tests Form berhasil di inisiasi')
       initMajors()
       print('Majors berhasil di inisiasi')
+  return True
 
 def predictMajor(data) :
   y_pred = classifer.predict(data)

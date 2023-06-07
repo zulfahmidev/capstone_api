@@ -6,83 +6,503 @@
     "questions": [
       {
         "question": "How would you rate your mathematical and analytical skills?",
-        "weight": [1, 2, 3, 4, 5]
+        "options": [
+          {
+            "value": "sangat tidak setuju",
+            "weight": 1
+          },
+          {
+            "value": "tidak setuju",
+            "weight": 2
+          },
+          {
+            "value": "netral",
+            "weight": 3
+          },
+          {
+            "value": "setuju",
+            "weight": 4
+          },
+          {
+            "value": "sangat setuju",
+            "weight": 5
+          }
+        ]
       },
       {
         "question": "Are you more inclined towards scientific or artistic pursuits?",
-        "weight": [1, 2, 3, 4, 5]
+        "options": [
+          {
+            "value": "sangat tidak setuju",
+            "weight": 1
+          },
+          {
+            "value": "tidak setuju",
+            "weight": 2
+          },
+          {
+            "value": "netral",
+            "weight": 3
+          },
+          {
+            "value": "setuju",
+            "weight": 4
+          },
+          {
+            "value": "sangat setuju",
+            "weight": 5
+          }
+        ]
       },
       {
         "question": "Do you enjoy working with technology and computers?",
-        "weight": [1, 2, 3, 4, 5]
+        "options": [
+          {
+            "value": "sangat tidak setuju",
+            "weight": 1
+          },
+          {
+            "value": "tidak setuju",
+            "weight": 2
+          },
+          {
+            "value": "netral",
+            "weight": 3
+          },
+          {
+            "value": "setuju",
+            "weight": 4
+          },
+          {
+            "value": "sangat setuju",
+            "weight": 5
+          }
+        ]
       },
       {
         "question": "How interested are you in understanding human behavior and motivations?",
-        "weight": [1, 2, 3, 4, 5]
+        "options": [
+          {
+            "value": "sangat tidak setuju",
+            "weight": 1
+          },
+          {
+            "value": "tidak setuju",
+            "weight": 2
+          },
+          {
+            "value": "netral",
+            "weight": 3
+          },
+          {
+            "value": "setuju",
+            "weight": 4
+          },
+          {
+            "value": "sangat setuju",
+            "weight": 5
+          }
+        ]
       },
       {
         "question": "Are you drawn to solving technical or scientific problems?",
-        "weight": [1, 2, 3, 4, 5]
+        "options": [
+          {
+            "value": "sangat tidak setuju",
+            "weight": 1
+          },
+          {
+            "value": "tidak setuju",
+            "weight": 2
+          },
+          {
+            "value": "netral",
+            "weight": 3
+          },
+          {
+            "value": "setuju",
+            "weight": 4
+          },
+          {
+            "value": "sangat setuju",
+            "weight": 5
+          }
+        ]
       },
       {
         "question": "Do you have a strong inclination towards creative expression?",
-        "weight": [1, 2, 3, 4, 5]
+        "options": [
+          {
+            "value": "sangat tidak setuju",
+            "weight": 1
+          },
+          {
+            "value": "tidak setuju",
+            "weight": 2
+          },
+          {
+            "value": "netral",
+            "weight": 3
+          },
+          {
+            "value": "setuju",
+            "weight": 4
+          },
+          {
+            "value": "sangat setuju",
+            "weight": 5
+          }
+        ]
       },
       {
         "question": "Are you interested in exploring different cultures and perspectives?",
-        "weight": [1, 2, 3, 4, 5]
+        "options": [
+          {
+            "value": "sangat tidak setuju",
+            "weight": 1
+          },
+          {
+            "value": "tidak setuju",
+            "weight": 2
+          },
+          {
+            "value": "netral",
+            "weight": 3
+          },
+          {
+            "value": "setuju",
+            "weight": 4
+          },
+          {
+            "value": "sangat setuju",
+            "weight": 5
+          }
+        ]
       },
       {
         "question": "How important is it for you to make a positive impact on others' lives?",
-        "weight": [1, 2, 3, 4, 5]
+        "options": [
+          {
+            "value": "sangat tidak setuju",
+            "weight": 1
+          },
+          {
+            "value": "tidak setuju",
+            "weight": 2
+          },
+          {
+            "value": "netral",
+            "weight": 3
+          },
+          {
+            "value": "setuju",
+            "weight": 4
+          },
+          {
+            "value": "sangat setuju",
+            "weight": 5
+          }
+        ]
       },
       {
         "question": "Are you more inclined towards practical or theoretical knowledge?",
-        "weight": [1, 2, 3, 4, 5]
+        "options": [
+          {
+            "value": "sangat tidak setuju",
+            "weight": 1
+          },
+          {
+            "value": "tidak setuju",
+            "weight": 2
+          },
+          {
+            "value": "netral",
+            "weight": 3
+          },
+          {
+            "value": "setuju",
+            "weight": 4
+          },
+          {
+            "value": "sangat setuju",
+            "weight": 5
+          }
+        ]
       },
       {
         "question": "How comfortable are you with public speaking and presenting?",
-        "weight": [1, 2, 3, 4, 5]
+        "options": [
+          {
+            "value": "sangat tidak setuju",
+            "weight": 1
+          },
+          {
+            "value": "tidak setuju",
+            "weight": 2
+          },
+          {
+            "value": "netral",
+            "weight": 3
+          },
+          {
+            "value": "setuju",
+            "weight": 4
+          },
+          {
+            "value": "sangat setuju",
+            "weight": 5
+          }
+        ]
       },
       {
         "question": "Are you interested in environmental sustainability and conservation?",
-        "weight": [1, 2, 3, 4, 5]
+        "options": [
+          {
+            "value": "sangat tidak setuju",
+            "weight": 1
+          },
+          {
+            "value": "tidak setuju",
+            "weight": 2
+          },
+          {
+            "value": "netral",
+            "weight": 3
+          },
+          {
+            "value": "setuju",
+            "weight": 4
+          },
+          {
+            "value": "sangat setuju",
+            "weight": 5
+          }
+        ]
       },
       {
         "question": "How skilled are you at critical thinking and problem-solving?",
-        "weight": [1, 2, 3, 4, 5]
+        "options": [
+          {
+            "value": "sangat tidak setuju",
+            "weight": 1
+          },
+          {
+            "value": "tidak setuju",
+            "weight": 2
+          },
+          {
+            "value": "netral",
+            "weight": 3
+          },
+          {
+            "value": "setuju",
+            "weight": 4
+          },
+          {
+            "value": "sangat setuju",
+            "weight": 5
+          }
+        ]
       },
       {
         "question": "Do you enjoy conducting experiments and analyzing data?",
-        "weight": [1, 2, 3, 4, 5]
+        "options": [
+          {
+            "value": "sangat tidak setuju",
+            "weight": 1
+          },
+          {
+            "value": "tidak setuju",
+            "weight": 2
+          },
+          {
+            "value": "netral",
+            "weight": 3
+          },
+          {
+            "value": "setuju",
+            "weight": 4
+          },
+          {
+            "value": "sangat setuju",
+            "weight": 5
+          }
+        ]
       },
       {
         "question": "Are you interested in studying business and entrepreneurship?",
-        "weight": [1, 2, 3, 4, 5]
+        "options": [
+          {
+            "value": "sangat tidak setuju",
+            "weight": 1
+          },
+          {
+            "value": "tidak setuju",
+            "weight": 2
+          },
+          {
+            "value": "netral",
+            "weight": 3
+          },
+          {
+            "value": "setuju",
+            "weight": 4
+          },
+          {
+            "value": "sangat setuju",
+            "weight": 5
+          }
+        ]
       },
       {
         "question": "How well do you work in a team and collaborate with others?",
-        "weight": [1, 2, 3, 4, 5]
+        "options": [
+          {
+            "value": "sangat tidak setuju",
+            "weight": 1
+          },
+          {
+            "value": "tidak setuju",
+            "weight": 2
+          },
+          {
+            "value": "netral",
+            "weight": 3
+          },
+          {
+            "value": "setuju",
+            "weight": 4
+          },
+          {
+            "value": "sangat setuju",
+            "weight": 5
+          }
+        ]
       },
       {
         "question": "Are you interested in the healthcare and medical fields?",
-        "weight": [1, 2, 3, 4, 5]
+        "options": [
+          {
+            "value": "sangat tidak setuju",
+            "weight": 1
+          },
+          {
+            "value": "tidak setuju",
+            "weight": 2
+          },
+          {
+            "value": "netral",
+            "weight": 3
+          },
+          {
+            "value": "setuju",
+            "weight": 4
+          },
+          {
+            "value": "sangat setuju",
+            "weight": 5
+          }
+        ]
       },
       {
         "question": "How important are creativity and innovation to you?",
-        "weight": [1, 2, 3, 4, 5]
+        "options": [
+          {
+            "value": "sangat tidak setuju",
+            "weight": 1
+          },
+          {
+            "value": "tidak setuju",
+            "weight": 2
+          },
+          {
+            "value": "netral",
+            "weight": 3
+          },
+          {
+            "value": "setuju",
+            "weight": 4
+          },
+          {
+            "value": "sangat setuju",
+            "weight": 5
+          }
+        ]
       },
       {
         "question": "Do you have a strong interest in literature and language?",
-        "weight": [1, 2, 3, 4, 5]
+        "options": [
+          {
+            "value": "sangat tidak setuju",
+            "weight": 1
+          },
+          {
+            "value": "tidak setuju",
+            "weight": 2
+          },
+          {
+            "value": "netral",
+            "weight": 3
+          },
+          {
+            "value": "setuju",
+            "weight": 4
+          },
+          {
+            "value": "sangat setuju",
+            "weight": 5
+          }
+        ]
       },
       {
         "question": "Are you inclined toward research and academic pursuits?",
-        "weight": [1, 2, 3, 4, 5]
+        "options": [
+          {
+            "value": "sangat tidak setuju",
+            "weight": 1
+          },
+          {
+            "value": "tidak setuju",
+            "weight": 2
+          },
+          {
+            "value": "netral",
+            "weight": 3
+          },
+          {
+            "value": "setuju",
+            "weight": 4
+          },
+          {
+            "value": "sangat setuju",
+            "weight": 5
+          }
+        ]
       },
       {
         "question": "How interested are you in the social sciences and understanding society?",
-        "weight": [1, 2, 3, 4, 5]
+        "options": [
+          {
+            "value": "sangat tidak setuju",
+            "weight": 1
+          },
+          {
+            "value": "tidak setuju",
+            "weight": 2
+          },
+          {
+            "value": "netral",
+            "weight": 3
+          },
+          {
+            "value": "setuju",
+            "weight": 4
+          },
+          {
+            "value": "sangat setuju",
+            "weight": 5
+          }
+        ]
       }
     ]
   }
