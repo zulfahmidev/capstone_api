@@ -20,7 +20,7 @@ def init() :
     for test in tests :
       form = Form.query.filter_by(slug=test['slug']).first()
       if form is not None:
-        continue
+        form.destroy()
       form = Form(
         title=test['title'],
         description=test['description'],
