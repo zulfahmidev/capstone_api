@@ -1,0 +1,509 @@
+[
+  {
+    "title": "minat bakat",
+    "slug": "minat-bakat",
+    "description": "-",
+    "questions": [
+      {
+        "question": "How would you rate your mathematical and analytical skills?",
+        "options": [
+          {
+            "value": "strongly disagree",
+            "weight": 1
+          },
+          {
+            "value": "don't agree",
+            "weight": 2
+          },
+          {
+            "value": "neutral",
+            "weight": 3
+          },
+          {
+            "value": "agree",
+            "weight": 4
+          },
+          {
+            "value": "strongly agree",
+            "weight": 5
+          }
+        ]
+      },
+      {
+        "question": "Are you more inclined towards scientific or artistic pursuits?",
+        "options": [
+          {
+            "value": "strongly disagree",
+            "weight": 1
+          },
+          {
+            "value": "don't agree",
+            "weight": 2
+          },
+          {
+            "value": "neutral",
+            "weight": 3
+          },
+          {
+            "value": "agree",
+            "weight": 4
+          },
+          {
+            "value": "strongly agree",
+            "weight": 5
+          }
+        ]
+      },
+      {
+        "question": "Do you enjoy working with technology and computers?",
+        "options": [
+          {
+            "value": "strongly disagree",
+            "weight": 1
+          },
+          {
+            "value": "don't agree",
+            "weight": 2
+          },
+          {
+            "value": "neutral",
+            "weight": 3
+          },
+          {
+            "value": "agree",
+            "weight": 4
+          },
+          {
+            "value": "strongly agree",
+            "weight": 5
+          }
+        ]
+      },
+      {
+        "question": "How interested are you in understanding human behavior and motivations?",
+        "options": [
+          {
+            "value": "strongly disagree",
+            "weight": 1
+          },
+          {
+            "value": "don't agree",
+            "weight": 2
+          },
+          {
+            "value": "neutral",
+            "weight": 3
+          },
+          {
+            "value": "agree",
+            "weight": 4
+          },
+          {
+            "value": "strongly agree",
+            "weight": 5
+          }
+        ]
+      },
+      {
+        "question": "Are you drawn to solving technical or scientific problems?",
+        "options": [
+          {
+            "value": "strongly disagree",
+            "weight": 1
+          },
+          {
+            "value": "don't agree",
+            "weight": 2
+          },
+          {
+            "value": "neutral",
+            "weight": 3
+          },
+          {
+            "value": "agree",
+            "weight": 4
+          },
+          {
+            "value": "strongly agree",
+            "weight": 5
+          }
+        ]
+      },
+      {
+        "question": "Do you have a strong inclination towards creative expression?",
+        "options": [
+          {
+            "value": "strongly disagree",
+            "weight": 1
+          },
+          {
+            "value": "don't agree",
+            "weight": 2
+          },
+          {
+            "value": "neutral",
+            "weight": 3
+          },
+          {
+            "value": "agree",
+            "weight": 4
+          },
+          {
+            "value": "strongly agree",
+            "weight": 5
+          }
+        ]
+      },
+      {
+        "question": "Are you interested in exploring different cultures and perspectives?",
+        "options": [
+          {
+            "value": "strongly disagree",
+            "weight": 1
+          },
+          {
+            "value": "don't agree",
+            "weight": 2
+          },
+          {
+            "value": "neutral",
+            "weight": 3
+          },
+          {
+            "value": "agree",
+            "weight": 4
+          },
+          {
+            "value": "strongly agree",
+            "weight": 5
+          }
+        ]
+      },
+      {
+        "question": "How important is it for you to make a positive impact on others' lives?",
+        "options": [
+          {
+            "value": "strongly disagree",
+            "weight": 1
+          },
+          {
+            "value": "don't agree",
+            "weight": 2
+          },
+          {
+            "value": "neutral",
+            "weight": 3
+          },
+          {
+            "value": "agree",
+            "weight": 4
+          },
+          {
+            "value": "strongly agree",
+            "weight": 5
+          }
+        ]
+      },
+      {
+        "question": "Are you more inclined towards practical or theoretical knowledge?",
+        "options": [
+          {
+            "value": "strongly disagree",
+            "weight": 1
+          },
+          {
+            "value": "don't agree",
+            "weight": 2
+          },
+          {
+            "value": "neutral",
+            "weight": 3
+          },
+          {
+            "value": "agree",
+            "weight": 4
+          },
+          {
+            "value": "strongly agree",
+            "weight": 5
+          }
+        ]
+      },
+      {
+        "question": "How comfortable are you with public speaking and presenting?",
+        "options": [
+          {
+            "value": "strongly disagree",
+            "weight": 1
+          },
+          {
+            "value": "don't agree",
+            "weight": 2
+          },
+          {
+            "value": "neutral",
+            "weight": 3
+          },
+          {
+            "value": "agree",
+            "weight": 4
+          },
+          {
+            "value": "strongly agree",
+            "weight": 5
+          }
+        ]
+      },
+      {
+        "question": "Are you interested in environmental sustainability and conservation?",
+        "options": [
+          {
+            "value": "strongly disagree",
+            "weight": 1
+          },
+          {
+            "value": "don't agree",
+            "weight": 2
+          },
+          {
+            "value": "neutral",
+            "weight": 3
+          },
+          {
+            "value": "agree",
+            "weight": 4
+          },
+          {
+            "value": "strongly agree",
+            "weight": 5
+          }
+        ]
+      },
+      {
+        "question": "How skilled are you at critical thinking and problem-solving?",
+        "options": [
+          {
+            "value": "strongly disagree",
+            "weight": 1
+          },
+          {
+            "value": "don't agree",
+            "weight": 2
+          },
+          {
+            "value": "neutral",
+            "weight": 3
+          },
+          {
+            "value": "agree",
+            "weight": 4
+          },
+          {
+            "value": "strongly agree",
+            "weight": 5
+          }
+        ]
+      },
+      {
+        "question": "Do you enjoy conducting experiments and analyzing data?",
+        "options": [
+          {
+            "value": "strongly disagree",
+            "weight": 1
+          },
+          {
+            "value": "don't agree",
+            "weight": 2
+          },
+          {
+            "value": "neutral",
+            "weight": 3
+          },
+          {
+            "value": "agree",
+            "weight": 4
+          },
+          {
+            "value": "strongly agree",
+            "weight": 5
+          }
+        ]
+      },
+      {
+        "question": "Are you interested in studying business and entrepreneurship?",
+        "options": [
+          {
+            "value": "strongly disagree",
+            "weight": 1
+          },
+          {
+            "value": "don't agree",
+            "weight": 2
+          },
+          {
+            "value": "neutral",
+            "weight": 3
+          },
+          {
+            "value": "agree",
+            "weight": 4
+          },
+          {
+            "value": "strongly agree",
+            "weight": 5
+          }
+        ]
+      },
+      {
+        "question": "How well do you work in a team and collaborate with others?",
+        "options": [
+          {
+            "value": "strongly disagree",
+            "weight": 1
+          },
+          {
+            "value": "don't agree",
+            "weight": 2
+          },
+          {
+            "value": "neutral",
+            "weight": 3
+          },
+          {
+            "value": "agree",
+            "weight": 4
+          },
+          {
+            "value": "strongly agree",
+            "weight": 5
+          }
+        ]
+      },
+      {
+        "question": "Are you interested in the healthcare and medical fields?",
+        "options": [
+          {
+            "value": "strongly disagree",
+            "weight": 1
+          },
+          {
+            "value": "don't agree",
+            "weight": 2
+          },
+          {
+            "value": "neutral",
+            "weight": 3
+          },
+          {
+            "value": "agree",
+            "weight": 4
+          },
+          {
+            "value": "strongly agree",
+            "weight": 5
+          }
+        ]
+      },
+      {
+        "question": "How important are creativity and innovation to you?",
+        "options": [
+          {
+            "value": "strongly disagree",
+            "weight": 1
+          },
+          {
+            "value": "don't agree",
+            "weight": 2
+          },
+          {
+            "value": "neutral",
+            "weight": 3
+          },
+          {
+            "value": "agree",
+            "weight": 4
+          },
+          {
+            "value": "strongly agree",
+            "weight": 5
+          }
+        ]
+      },
+      {
+        "question": "Do you have a strong interest in literature and language?",
+        "options": [
+          {
+            "value": "strongly disagree",
+            "weight": 1
+          },
+          {
+            "value": "don't agree",
+            "weight": 2
+          },
+          {
+            "value": "neutral",
+            "weight": 3
+          },
+          {
+            "value": "agree",
+            "weight": 4
+          },
+          {
+            "value": "strongly agree",
+            "weight": 5
+          }
+        ]
+      },
+      {
+        "question": "Are you inclined toward research and academic pursuits?",
+        "options": [
+          {
+            "value": "strongly disagree",
+            "weight": 1
+          },
+          {
+            "value": "don't agree",
+            "weight": 2
+          },
+          {
+            "value": "neutral",
+            "weight": 3
+          },
+          {
+            "value": "agree",
+            "weight": 4
+          },
+          {
+            "value": "strongly agree",
+            "weight": 5
+          }
+        ]
+      },
+      {
+        "question": "How interested are you in the social sciences and understanding society?",
+        "options": [
+          {
+            "value": "strongly disagree",
+            "weight": 1
+          },
+          {
+            "value": "don't agree",
+            "weight": 2
+          },
+          {
+            "value": "neutral",
+            "weight": 3
+          },
+          {
+            "value": "agree",
+            "weight": 4
+          },
+          {
+            "value": "strongly agree",
+            "weight": 5
+          }
+        ]
+      }
+    ]
+  }
+]

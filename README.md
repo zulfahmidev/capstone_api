@@ -1,31 +1,31 @@
 # Documentation Rest API - Arahku  
 
 ## List of Contents 
-- Authentication
+- Authentication 
+
   - [Register Account](#register-account)
   - [Login Account](#login-account)
-  - [Show Logged In Account Data](#show-logged-in-account-data)
+  - [Get Logged In Account Data](#get-logged-in-account-data) 
   - [Forgot Password](#forgot-password)
   - [Reset Password](#reset-password)
 
-- User Account 
-  - [Show User Account](#show-user-account)
+- User Account
+  - [Get User Account](#get-user-account)
   - [Edit User Account](#edit-user-account)
 
-- Major Category
-  - [Show Major Category](#show-major-category)
-  - [Add Major Category](#add-major-category)
-  - [Edit Major Category](#edit-major-category)
-  - [Delete Major Category](#delete-major-category)
-
 - Major
-  - [Show Major](#show-major)
-  - [Add Major](#add-major)
-  - [Edit Major](#edit-major)
-  - [Delete Major](#delete-major)
+  - [Get Majors](#get-majors)
+  - [Get Major By Id](#get-major-by-id)
+
+- Form
+  - [Get Forms](#get-all-forms)
+  - [Get Form By Slug](#get-form-by-slug)
+
+- Response
+  - [Get Responses](#get-all-responses)
+  - [Send Response](#send-response)
 
 ## Register Account
-
 ### Endpoint
 ```
 POST <BASE_URL>/auth/register
@@ -213,112 +213,26 @@ Content-Type:application/json
 }
 ```
 
-## Show Major Category
-### Endpoint
-```
-GET <BASE_URL>/major/category
-```
-### Response
-```
-{
-    "data": [
-        {
-            "created_at": "Mon, 29 May 2023 09:22:02 GMT",
-            "id": major_category_id**,
-            "name": "category_name**"
-        }
-    ],
-    "message": "Data loaded successfully.",
-    "status": true
-}
-```
-
-## Add Major Category
-### Endpoint
-```
-POST <BASE_URL>/major/category
-```
-### Headers
-```
-Content-Type:application/json
-```
-### Request
-```
-{
-    "name": "<CATEGORY NAME>"
-}
-```
-### Response
-```
-{
-    "data": {
-        "created_at": "Mon, 29 May 2023 09:22:02 GMT",
-        "id": major_category_id**,
-        "name": "category_name**"
-    },
-    "message": "Category successfully created.",
-    "status": true
-}
-```
-
-## Edit Major Category
-### Endpoint
-```
-PUT <BASE_URL>/major/category/<id>
-```
-### Headers
-```
-Content-Type:application/json
-```
-### Request
-```
-{
-    "name": "<CATEGORY NAME>"
-}
-```
-### Response
-```
-{
-    "message": "Category successfully updated.",
-    "status": true
-}
-```
-
-## Delete Major Category
-### Endpoint
-```
-DELETE <BASE_URL>/major/category/<id>
-```
-### Response
-```
-{
-    "data": [
-        {
-            "created_at": "Mon, 29 May 2023 09:22:02 GMT",
-            "id": major_category_id**,
-            "name": "category_name**"
-        }
-    ],
-    "message": "Category successfully destroyed.",
-    "status": true
-}
-```
-
-## Show Major
+## Get Majors
 ### Endpoint
 ```
 GET <BASE_URL>/major
 ```
+### Headers
+```
+Content-Type:application/json
+```
+### Request <Optional>
+```
+{
+    "search": "<search_key>",
+}
+```
 ### Response
 ```
 {
     "data": [
         {
-            "category": {
-                "created_at": "Mon, 29 May 2023 09:22:02 GMT",
-                "id": major_category_id**,
-                "name": "category_name**"
-            },
             "created_at": "Mon, 29 May 2023 12:14:14 GMT",
             "description": "description**",
             "id": major_id**,
@@ -330,10 +244,128 @@ GET <BASE_URL>/major
 }
 ```
 
-## Add Major
+## Get Major By Id
 ### Endpoint
 ```
-POST <BASE_URL>/major
+GET <BASE_URL>/major/<id>
+```
+### Headers
+```
+Content-Type:application/json
+```
+### Response
+```
+{
+    "data": {
+        "created_at": "Mon, 29 May 2023 12:14:14 GMT",
+        "description": "description**",
+        "id": major_id**,
+        "name": "major_name**"
+    },
+    "message": "Data loaded successfully.",
+    "status": true
+}
+```
+
+## Get Forms
+### Endpoint
+```
+GET <BASE_URL>/form/
+```
+### Response
+```
+{
+    "data": [
+        {
+            "description": "**description",
+            "id": **form_id,
+            "slug": **form_slug,
+            "title": "**title"
+        },
+    ],
+    "message": "Data loaded successfully.",
+    "status": true
+}
+```
+
+## Get Form By Slug
+### Endpoint
+```
+GET <BASE_URL>/form/<slug>
+```
+### Response
+```
+{
+    "data": {
+        "created_at": "Mon, 05 Jun 2023 10:00:53 GMT",
+        "description": "**description",
+        "id": **form_id,
+        "slug": "**form_slug",
+        "title": "**title",
+        "fields": [
+            {
+                "id": **field_id,
+                "label": "**label_or_question",
+                "options": [
+                    {
+                        "id": **option_id,
+                        "value": "**value"
+                    },
+
+                    ...
+                ]
+
+                ...
+            },
+        ]
+    },
+    "message": "Data loaded successfully.",
+    "status": true
+}
+```
+
+## Get Form Responses
+### Endpoint
+```
+GET <BASE_URL>/form/response/<form_id>
+```
+### Response
+```
+{
+    "data": [
+        {
+            "created_at": "Mon, 05 Jun 2023 10:14:10 GMT",
+            "form_id": {
+                "id": **form_id,
+                "title": "**form_title"
+            },
+            "id": 1,
+            "result": "**result",
+            "user_id": {
+                "id": **user_id,
+                "name": "**username"
+            },
+            "responses": [
+                {
+                    "created_at": "Mon, 05 Jun 2023 10:14:10 GMT",
+                    "id": 1,
+                    "option_id": 1,
+                    "response_id": 1
+                }
+
+                ...
+            ]
+        }
+    ],
+    "message": "Data loaded successfully.",
+    "status": true
+}
+```
+
+## Send Response
+### Endpoint
+```
+POST <BASE_URL>/form/response
 ```
 ### Headers
 ```
@@ -342,86 +374,45 @@ Content-Type:application/json
 ### Request
 ```
 {
-    "name": "<NAME>",
-    "description": "<DESCRIPTION>",
-    "id_category": "<MAJOR CATEGORY ID>"
-}
-```
-### Response
-```
-{
-    "data": {
-        "category": {
-            "created_at": "Mon, 29 May 2023 09:22:02 GMT",
-            "id": major_category_id**,
-            "name": "category_name**"
+    "user_id": **user_id,
+    "form_id": **form_id,
+    "responses": [
+        {
+            "field_id": **field_id,
+            "option_id": **option_id
         },
-        "created_at": "Mon, 29 May 2023 12:14:14 GMT",
-        "description": "description**",
-        "id": major_id**,
-        "name": "major_name**"
-    },
-    "message": "Major successfully created.",
-    "status": true
-}
-```
 
-## Edit Major
-### Endpoint
-```
-PUT <BASE_URL>/major/<id>
-```
-### Headers
-```
-Content-Type:application/json
-```
-### Request
-```
-{
-    "name": "<NAME>",
-    "description": "<DESCRIPTION>",
-    "id_category": "<MAJOR CATEGORY ID>"
+        ...
+    ]
 }
 ```
 ### Response
 ```
 {
     "data": {
-        "category": {
-            "created_at": "Mon, 29 May 2023 09:22:02 GMT",
-            "id": major_category_id**,
-            "name": "category_name**"
+        "created_at": "Mon, 05 Jun 2023 10:14:10 GMT",
+        "form_id": {
+            "id": **form_id,
+            "title": "**form_title"
         },
-        "created_at": "Mon, 29 May 2023 12:14:14 GMT",
-        "description": "description**",
-        "id": major_id**,
-        "name": "major_name**"
-    },
-    "message": "Major successfully updated.",
-    "status": true
-}
-```
+        "id": 1,
+        "result": "**result",
+        "user_id": {
+            "id": **user_id,
+            "name": "**username"
+        },
+        "responses": [
+            {
+                "created_at": "Mon, 05 Jun 2023 10:14:10 GMT",
+                "id": **response_answer_id,
+                "option_id": **option_id,
+                "response_id": **response_id
+            }
 
-## Delete Major
-### Endpoint
-```
-DELETE <BASE_URL>/major/category/<id>
-```
-### Response
-```
-{
-    "data": {
-        "category": {
-            "created_at": "Mon, 29 May 2023 09:22:02 GMT",
-            "id": major_category_id**,
-            "name": "category_name**"
-        },
-        "created_at": "Mon, 29 May 2023 12:14:14 GMT",
-        "description": "description**",
-        "id": major_id**,
-        "name": "major_name**"
+            ...
+        ]
     },
-    "message": "Major successfully destroyed.",
+    "message": "Response successfully sended.",
     "status": true
 }
 ```

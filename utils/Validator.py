@@ -27,10 +27,13 @@ class Validator :
         args = []
         if len(rule) > 1 :
           args = rule[1].replace(' ', '').split(',')
-          
+        
         if key == 'required' :
           if k not in self.files and value is None :
             self.errors.append(f'The {k} field is required.')
+        elif key == 'unchanged' :
+          if k not in self.files and value is not None :
+            self.errors.append(f'The {k} field cannot be changed.')
         elif key == 'integer' :
           if value is not None :
             if not isinstance(value, int):
@@ -70,14 +73,21 @@ class Validator :
             res = exists(value, args[0], args[1])
             if (res is not True) :
               self.errors.append(f'The selected {k} is invalid.')
+        elif key == 'unique' :
+          if value is not None :
+            res = unique(value, args[0], args[1])
+            if (res is not True) :
+              self.errors.append(f'The {k} has already been taken.')
         elif key == 'lower' :
           if value is not None :
             if not isinstance(value, str):
               self.errors.append(f'The {k} is not a string.')
+        elif key == 'array' :
+          if value is not None :
+            if not isinstance(value, list):
+              self.errors.append(f'The {k} is not an array.')
         else:
           self.errors.append(f'The \'{key}\' field does not exists.')
-        
-          
     return len(self.errors) == 0
 
 def allowed_file(filename, exts = []) :
@@ -124,3 +134,24 @@ def exists(val: str, tbl: str, fld: str) :
   if rec is None :
     return False
   return True
+
+def unique(val: str, tbl: str, fld: str) :
+  models = {}
+  
+  for model in db.Model.__subclasses__():
+    if isinstance(model, type) and issubclass(model, db.Model):
+      models[model.__tablename__] = model
+  
+  metadata = db.metadata
+  if tbl not in metadata.tables.keys() :
+    return False
+  
+  if fld not in metadata.tables[tbl].columns.keys() :
+    return False
+  
+  rec = db.session.query(models[tbl])\
+    .filter(getattr(models[tbl], fld) == val)\
+    .first()
+  if rec is None :
+    return True
+  return False

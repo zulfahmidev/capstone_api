@@ -8,11 +8,13 @@ class Option(db.Model) :
   id = db.Column(db.Integer, primary_key=True)
   field_id = db.Column(db.Integer, db.ForeignKey('fields.id', ondelete='CASCADE'))
   value = db.Column(db.String(255), nullable=False)
+  weight = db.Column(db.Integer, nullable=False)
   created_at = db.Column(db.DateTime, nullable=False)
   
-  def __init__(self, field_id: int, value: str) :
+  def __init__(self, field_id: int, value: str, weight: int) :
     self.field_id = field_id
     self.value = value
+    self.weight = weight
     self.created_at = datetime.now()
     self.save()
       
@@ -34,6 +36,7 @@ class Option(db.Model) :
     return {
       "id": self.id,
       "value": self.value,
-      "field_id": self.field_id
+      "weight": self.weight,
+      # "field_id": self.field_id
     }
   
