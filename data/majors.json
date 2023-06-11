@@ -1,10 +1,10 @@
 {
   "majors": [
-    "ComputerScience", "Engineering", "Sociology", "Public Relations",
-    "Psychology", "Political Science", "Physics", "Pharmacy",
-    "Mathematics", "Criminology", "Journalism", "History", "Geography",
-    "English Literature", "Ecology", "Economics", "Design",
-    "Chemistry", "Biology", "Architecture", "Anthropology", "Nursing",
-    "Medical", "Law"
+    "Ilmu Komputer", "Teknik", "Sosiologi", "Hubungan Masyarakat",
+    "Psikologi", "Ilmu Politik", "Fisika", "Farmasi",
+    "Matematika", "Kriminologi", "Jurnalisme", "Sejarah", "Geografi",
+    "Sastra Inggris", "Ekologi", "Ekonomi", "Desain",
+    "Kimia", "Biologi", "Arsitektur", "Antropologi", "Keperawatan",
+    "Medis", "Hukum"
   ]
 }
