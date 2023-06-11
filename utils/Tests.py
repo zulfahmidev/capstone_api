@@ -38,9 +38,7 @@ def init() :
             value=opt['value'],
             weight=opt['weight'],
           )  
-      print('Tests Form berhasil di inisiasi')
       initMajors()
-      print('Majors berhasil di inisiasi')
   return True
 
 def predictMajor(data) :
