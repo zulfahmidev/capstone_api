@@ -3,7 +3,7 @@
 ## List of Contents 
 - Authentication 
 
-  - [Register Account](#register-account)
+  - [Register Account](#register-account) 
   - [Login Account](#login-account)
   - [Get Logged In Account Data](#get-logged-in-account-data) 
   - [Forgot Password](#forgot-password)
