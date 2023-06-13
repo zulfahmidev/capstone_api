@@ -1,7 +1,7 @@
 # Documentation Rest API - Arahku  
 
 ## List of Contents 
-- Authentication 
+- Authentication  
 
   - [Register Account](#register-account)
   - [Login Account](#login-account)
