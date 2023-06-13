@@ -5,501 +5,501 @@
     "description": "-",
     "questions": [
       {
-        "question": "Saya memiliki kemampuan matematika dan analitis yang tinggi?",
+        "question": "How would you rate your mathematical and analytical skills?",
         "options": [
           {
-            "value": "sangat tidak setuju",
+            "value": "strongly disagree",
             "weight": 1
           },
           {
-            "value": "tidak setuju",
+            "value": "don't agree",
             "weight": 2
           },
           {
-            "value": "netral",
+            "value": "neutral",
             "weight": 3
           },
           {
-            "value": "setuju",
+            "value": "agree",
             "weight": 4
           },
           {
-            "value": "sangat setuju",
+            "value": "strongly agree",
             "weight": 5
           }
         ]
       },
       {
-        "question": "Saya lebih condong ke arah penelitian artistik?",
+        "question": "Are you more inclined towards scientific or artistic pursuits?",
         "options": [
           {
-            "value": "sangat tidak setuju",
+            "value": "strongly disagree",
             "weight": 1
           },
           {
-            "value": "tidak setuju",
+            "value": "don't agree",
             "weight": 2
           },
           {
-            "value": "netral",
+            "value": "neutral",
             "weight": 3
           },
           {
-            "value": "setuju",
+            "value": "agree",
             "weight": 4
           },
           {
-            "value": "sangat setuju",
+            "value": "strongly agree",
             "weight": 5
           }
         ]
       },
       {
-        "question": "Saya menikmati pembelajran dengan teknologi dan komputer?",
+        "question": "Do you enjoy working with technology and computers?",
         "options": [
           {
-            "value": "sangat tidak setuju",
+            "value": "strongly disagree",
             "weight": 1
           },
           {
-            "value": "tidak setuju",
+            "value": "don't agree",
             "weight": 2
           },
           {
-            "value": "netral",
+            "value": "neutral",
             "weight": 3
           },
           {
-            "value": "setuju",
+            "value": "agree",
             "weight": 4
           },
           {
-            "value": "sangat setuju",
+            "value": "strongly agree",
             "weight": 5
           }
         ]
       },
       {
-        "question": "Saya tertarik dalam memahami perilaku dan motivasi manusia?",
+        "question": "How interested are you in understanding human behavior and motivations?",
         "options": [
           {
-            "value": "sangat tidak setuju",
+            "value": "strongly disagree",
             "weight": 1
           },
           {
-            "value": "tidak setuju",
+            "value": "don't agree",
             "weight": 2
           },
           {
-            "value": "netral",
+            "value": "neutral",
             "weight": 3
           },
           {
-            "value": "setuju",
+            "value": "agree",
             "weight": 4
           },
           {
-            "value": "sangat setuju",
+            "value": "strongly agree",
             "weight": 5
           }
         ]
       },
       {
-        "question": "Saya tertarik dalam memecahkan masalah teknis maupun ilmiah?",
+        "question": "Are you drawn to solving technical or scientific problems?",
         "options": [
           {
-            "value": "sangat tidak setuju",
+            "value": "strongly disagree",
             "weight": 1
           },
           {
-            "value": "tidak setuju",
+            "value": "don't agree",
             "weight": 2
           },
           {
-            "value": "netral",
+            "value": "neutral",
             "weight": 3
           },
           {
-            "value": "setuju",
+            "value": "agree",
             "weight": 4
           },
           {
-            "value": "sangat setuju",
+            "value": "strongly agree",
             "weight": 5
           }
         ]
       },
       {
-        "question": "Saya memiliki kecenderungan kuat dalam ekspresi kreatif?",
+        "question": "Do you have a strong inclination towards creative expression?",
         "options": [
           {
-            "value": "sangat tidak setuju",
+            "value": "strongly disagree",
             "weight": 1
           },
           {
-            "value": "tidak setuju",
+            "value": "don't agree",
             "weight": 2
           },
           {
-            "value": "netral",
+            "value": "neutral",
             "weight": 3
           },
           {
-            "value": "setuju",
+            "value": "agree",
             "weight": 4
           },
           {
-            "value": "sangat setuju",
+            "value": "strongly agree",
             "weight": 5
           }
         ]
       },
       {
-        "question": "Saya tertarik untuk menjelajahi budaya dan perspektif yang berbepda?",
+        "question": "Are you interested in exploring different cultures and perspectives?",
         "options": [
           {
-            "value": "sangat tidak setuju",
+            "value": "strongly disagree",
             "weight": 1
           },
           {
-            "value": "tidak setuju",
+            "value": "don't agree",
             "weight": 2
           },
           {
-            "value": "netral",
+            "value": "neutral",
             "weight": 3
           },
           {
-            "value": "setuju",
+            "value": "agree",
             "weight": 4
           },
           {
-            "value": "sangat setuju",
+            "value": "strongly agree",
             "weight": 5
           }
         ]
       },
       {
-        "question": "Penting bagi saya untuk memberikan dampak positif pada kehidupan orang lain?",
+        "question": "How important is it for you to make a positive impact on others' lives?",
         "options": [
           {
-            "value": "sangat tidak setuju",
+            "value": "strongly disagree",
             "weight": 1
           },
           {
-            "value": "tidak setuju",
+            "value": "don't agree",
             "weight": 2
           },
           {
-            "value": "netral",
+            "value": "neutral",
             "weight": 3
           },
           {
-            "value": "setuju",
+            "value": "agree",
             "weight": 4
           },
           {
-            "value": "sangat setuju",
+            "value": "strongly agree",
             "weight": 5
           }
         ]
       },
       {
-        "question": "Saya lebih condong pada pengetahuan praktis maupun teoritis?",
+        "question": "Are you more inclined towards practical or theoretical knowledge?",
         "options": [
           {
-            "value": "sangat tidak setuju",
+            "value": "strongly disagree",
             "weight": 1
           },
           {
-            "value": "tidak setuju",
+            "value": "don't agree",
             "weight": 2
           },
           {
-            "value": "netral",
+            "value": "neutral",
             "weight": 3
           },
           {
-            "value": "setuju",
+            "value": "agree",
             "weight": 4
           },
           {
-            "value": "sangat setuju",
+            "value": "strongly agree",
             "weight": 5
           }
         ]
       },
       {
-        "question": "Saya nyaman dalam melakukan perbicara di depan umum dan melakukan presentasi?",
+        "question": "How comfortable are you with public speaking and presenting?",
         "options": [
           {
-            "value": "sangat tidak setuju",
+            "value": "strongly disagree",
             "weight": 1
           },
           {
-            "value": "tidak setuju",
+            "value": "don't agree",
             "weight": 2
           },
           {
-            "value": "netral",
+            "value": "neutral",
             "weight": 3
           },
           {
-            "value": "setuju",
+            "value": "agree",
             "weight": 4
           },
           {
-            "value": "sangat setuju",
+            "value": "strongly agree",
             "weight": 5
           }
         ]
       },
       {
-        "question": "Saya tertarik pada masalah lingkungan dan pelestarian alam?",
+        "question": "Are you interested in environmental sustainability and conservation?",
         "options": [
           {
-            "value": "sangat tidak setuju",
+            "value": "strongly disagree",
             "weight": 1
           },
           {
-            "value": "tidak setuju",
+            "value": "don't agree",
             "weight": 2
           },
           {
-            "value": "netral",
+            "value": "neutral",
             "weight": 3
           },
           {
-            "value": "setuju",
+            "value": "agree",
             "weight": 4
           },
           {
-            "value": "sangat setuju",
+            "value": "strongly agree",
             "weight": 5
           }
         ]
       },
       {
-        "question": "Saya mahir Anda dalam berpikir kritis dan pemecahan masalah?",
+        "question": "How skilled are you at critical thinking and problem-solving?",
         "options": [
           {
-            "value": "sangat tidak setuju",
+            "value": "strongly disagree",
             "weight": 1
           },
           {
-            "value": "tidak setuju",
+            "value": "don't agree",
             "weight": 2
           },
           {
-            "value": "netral",
+            "value": "neutral",
             "weight": 3
           },
           {
-            "value": "setuju",
+            "value": "agree",
             "weight": 4
           },
           {
-            "value": "sangat setuju",
+            "value": "strongly agree",
             "weight": 5
           }
         ]
       },
       {
-        "question": "Saya sangat menikmati melakukan percobaan dan menganalisis data?",
+        "question": "Do you enjoy conducting experiments and analyzing data?",
         "options": [
           {
-            "value": "sangat tidak setuju",
+            "value": "strongly disagree",
             "weight": 1
           },
           {
-            "value": "tidak setuju",
+            "value": "don't agree",
             "weight": 2
           },
           {
-            "value": "netral",
+            "value": "neutral",
             "weight": 3
           },
           {
-            "value": "setuju",
+            "value": "agree",
             "weight": 4
           },
           {
-            "value": "sangat setuju",
+            "value": "strongly agree",
             "weight": 5
           }
         ]
       },
       {
-        "question": "Saya tertarik dalam mempelajari bisnis dan kewirausahaan?",
+        "question": "Are you interested in studying business and entrepreneurship?",
         "options": [
           {
-            "value": "sangat tidak setuju",
+            "value": "strongly disagree",
             "weight": 1
           },
           {
-            "value": "tidak setuju",
+            "value": "don't agree",
             "weight": 2
           },
           {
-            "value": "netral",
+            "value": "neutral",
             "weight": 3
           },
           {
-            "value": "setuju",
+            "value": "agree",
             "weight": 4
           },
           {
-            "value": "sangat setuju",
+            "value": "strongly agree",
             "weight": 5
           }
         ]
       },
       {
-        "question": "Saya tertarik bekerja dalam tim dan berkolaborasi dengan orang lain?",
+        "question": "How well do you work in a team and collaborate with others?",
         "options": [
           {
-            "value": "sangat tidak setuju",
+            "value": "strongly disagree",
             "weight": 1
           },
           {
-            "value": "tidak setuju",
+            "value": "don't agree",
             "weight": 2
           },
           {
-            "value": "netral",
+            "value": "neutral",
             "weight": 3
           },
           {
-            "value": "setuju",
+            "value": "agree",
             "weight": 4
           },
           {
-            "value": "sangat setuju",
+            "value": "strongly agree",
             "weight": 5
           }
         ]
       },
       {
-        "question": "Saya tertarik dalam bidang kesehatan dan medis?",
+        "question": "Are you interested in the healthcare and medical fields?",
         "options": [
           {
-            "value": "sangat tidak setuju",
+            "value": "strongly disagree",
             "weight": 1
           },
           {
-            "value": "tidak setuju",
+            "value": "don't agree",
             "weight": 2
           },
           {
-            "value": "netral",
+            "value": "neutral",
             "weight": 3
           },
           {
-            "value": "setuju",
+            "value": "agree",
             "weight": 4
           },
           {
-            "value": "sangat setuju",
+            "value": "strongly agree",
             "weight": 5
           }
         ]
       },
       {
-        "question": "Saya sangat menyykai kreativitas dan inovasi?",
+        "question": "How important are creativity and innovation to you?",
         "options": [
           {
-            "value": "sangat tidak setuju",
+            "value": "strongly disagree",
             "weight": 1
           },
           {
-            "value": "tidak setuju",
+            "value": "don't agree",
             "weight": 2
           },
           {
-            "value": "netral",
+            "value": "neutral",
             "weight": 3
           },
           {
-            "value": "setuju",
+            "value": "agree",
             "weight": 4
           },
           {
-            "value": "sangat setuju",
+            "value": "strongly agree",
             "weight": 5
           }
         ]
       },
       {
-        "question": "Saya memiliki minat yang kuat dalam sastra dan bahasa?",
+        "question": "Do you have a strong interest in literature and language?",
         "options": [
           {
-            "value": "sangat tidak setuju",
+            "value": "strongly disagree",
             "weight": 1
           },
           {
-            "value": "tidak setuju",
+            "value": "don't agree",
             "weight": 2
           },
           {
-            "value": "netral",
+            "value": "neutral",
             "weight": 3
           },
           {
-            "value": "setuju",
+            "value": "agree",
             "weight": 4
           },
           {
-            "value": "sangat setuju",
+            "value": "strongly agree",
             "weight": 5
           }
         ]
       },
       {
-        "question": "Saya cenderung suka pada penelitian dan kegiatan akademik?",
+        "question": "Are you inclined toward research and academic pursuits?",
         "options": [
           {
-            "value": "sangat tidak setuju",
+            "value": "strongly disagree",
             "weight": 1
           },
           {
-            "value": "tidak setuju",
+            "value": "don't agree",
             "weight": 2
           },
           {
-            "value": "netral",
+            "value": "neutral",
             "weight": 3
           },
           {
-            "value": "setuju",
+            "value": "agree",
             "weight": 4
           },
           {
-            "value": "sangat setuju",
+            "value": "strongly agree",
             "weight": 5
           }
         ]
       },
       {
-        "question": "Saya tertarik dalam memahami ilmu sosial dan pemahaman masyarakat?",
+        "question": "How interested are you in the social sciences and understanding society?",
         "options": [
           {
-            "value": "sangat tidak setuju",
+            "value": "strongly disagree",
             "weight": 1
           },
           {
-            "value": "tidak setuju",
+            "value": "don't agree",
             "weight": 2
           },
           {
-            "value": "netral",
+            "value": "neutral",
             "weight": 3
           },
           {
-            "value": "setuju",
+            "value": "agree",
             "weight": 4
           },
           {
-            "value": "sangat setuju",
+            "value": "strongly agree",
             "weight": 5
           }
         ]

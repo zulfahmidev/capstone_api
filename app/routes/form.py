@@ -351,11 +351,12 @@ def storeResponse() :
   weights = []
   for v in res :
     option = Option.query.get(v['option_id'])
-    weights.append(option.weight)
-    ResponseAnswer(
-      response_id=response.id,
-      option_id=v['option_id']
-    )
+    if option :
+      weights.append(option.weight)
+      ResponseAnswer(
+        response_id=response.id,
+        option_id=v['option_id']
+      )
   
   result = Tests.predictMajor([weights])[0]
   response.setResult(result)
@@ -367,7 +368,7 @@ def storeResponse() :
   ), 200
   
 @form_route.route('/init/tests', methods=['GET'])
-def intiTest() : 
+def initTest() : 
   if Tests.init() :
     return jsonify(
       status=True,
