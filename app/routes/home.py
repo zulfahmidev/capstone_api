@@ -1,7 +1,7 @@
-from flask import request, jsonify, Blueprint, render_template
+from flask import jsonify, Blueprint
 
-home = Blueprint('home', __name__)
-@home.route('/', methods=['GET'])
+home_route = Blueprint('home', __name__)
+@home_route.route('/', methods=['GET'])
 def home() :
   return jsonify(
     status=True,
