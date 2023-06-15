@@ -1,7 +1,8 @@
 # Documentation Rest API - Arahku  
 
-## List of Contents 
-- Authentication  
+## List of Contents
+- [Base Route](#base-route)
+- Authentication
 
   - [Register Account](#register-account)
   - [Login Account](#login-account)
@@ -24,6 +25,19 @@
 - Response
   - [Get Responses](#get-all-responses)
   - [Send Response](#send-response)
+
+## Base Route
+### Endpoint
+```
+GET <BASE_URL>/
+```
+### Reponse
+```
+{
+  "message": "Welcome to Arahku backend service!",
+  "status": true
+}
+```
 
 ## Register Account
 ### Endpoint
@@ -55,7 +69,32 @@ Content-Type:application/json
 ***Note:***
 Check your mailbox after registered for verify your email. This is an example email verification:
 ![image](https://github.com/zulfahmidev/capstone_api/assets/109580466/8936f40f-4911-48f3-b702-40fd1465d7d2)
-
+## Show Logged In Account Data
+### Endpoint
+```
+GET <BASE_URL>/auth/me
+```
+### isi token
+```
+masukan token <barier token : "token">
+```
+### Reponse
+```
+{
+    "data": {
+        "address": "account_address**",
+        "birth_date": "Sat, 02 Feb 2002 00:00:00 GMT",
+        "created_at": "Sun, 28 May 2023 22:51:06 GMT",
+        "email": "account_email**",
+        "id": user_id**
+        "name": "account_name**",
+        "phone": "phone*",
+        "picture": "picture_url**"
+    },
+    "message": "Data loaded successfully.",
+    "status": true
+}
+```
 ## Login Account
 ### Endpoint
 ```

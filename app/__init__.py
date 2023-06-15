@@ -6,6 +6,7 @@ from app.routes.user import user_route
 from app.routes.storage import storage_route
 from app.routes.major import major_route
 from app.routes.form import form_route
+from app.routes.home import home_route
 from config import InitConfig
 from extensions import db, mail, jwt, mgr
 
@@ -32,3 +33,4 @@ with app.app_context():
   app.register_blueprint(user_route, url_prefix='/user')
   app.register_blueprint(major_route, url_prefix='/major')
   app.register_blueprint(form_route, url_prefix='/form')
+  app.register_blueprint(home_route, url_prefix='/')
