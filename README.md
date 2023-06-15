@@ -1,6 +1,7 @@
 # Documentation Rest API - Arahku  
 
 ## List of Contents
+- [Base Route](#base-route)
 - Authentication
   - [Register Account](#register-account)
   - [Login Account](#login-account)
