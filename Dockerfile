@@ -4,6 +4,8 @@ WORKDIR /capstone
 
 COPY . .
 
+RUN git submodule update --init --recursive
+
 RUN apk add --no-cache mariadb-dev build-base \
     && apk add --no-cache mariadb-connector-c
 
