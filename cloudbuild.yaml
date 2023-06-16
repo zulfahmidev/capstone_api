@@ -3,6 +3,6 @@ steps:
     args:
       - '-c'
       - >
-        vmlist=$(gcloud compute instances list --format='value(name)' --filter="labels.${_VM_LABEL_KEY}:${_VM_LABEL_VALUE} AND status:RUNNING") && for vm in $vmlist; do gcloud compute ssh cloudbuild@$vm --zone $(gcloud compute instances list --format='value(zone)' --filter="name='$vm'") --quiet -- 'gsutil cp gs://private-capstone/scripts-startup/start_staging.sh . && sudo chmod +x start_staging.sh && sudo sh start_staging.sh '; done
+        vmlist=$(gcloud compute instances list --format='value(name)' --filter="labels.${_VM_LABEL_KEY}:${_VM_LABEL_VALUE} AND status:RUNNING") && for vm in $vmlist; do gcloud compute ssh cloudbuild@$vm --zone $(gcloud compute instances list --format='value(zone)' --filter="name='$vm'") --quiet -- 'gsutil cp gs://arahku-private/scripts-startup/start_staging.sh . && sudo chmod +x start_staging.sh && sudo sh start_staging.sh '; done
     entrypoint: bash
   
