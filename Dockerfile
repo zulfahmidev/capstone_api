@@ -21,6 +21,6 @@ ENV credential_file=${CREDENTIAL_FILE}
 COPY ${e_file} /capstone/.env
 COPY ${credential_file} /capstone/credentials.json
 
-EXPOSE 5000
+EXPOSE 80
 
 CMD ["python", "app.py"]
